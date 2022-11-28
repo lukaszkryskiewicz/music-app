@@ -1,0 +1,64 @@
+.hero {
+  background-image: url("../../images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1297px;
+  position: relative;
+
+  .hero-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: $color-one;
+    font-style: normal;
+    text-transform: uppercase; //do wyrzucenia --> JS musi to robić
+    line-height: normal;
+
+    .hero-title {
+      text-shadow: 0 0 118px rgba(0, 0, 0, 0.39);
+      color: $color-one;
+      font-size: 200px;
+      font-weight: $font-bold;
+      letter-spacing: 120px;
+    }
+
+    .hero-subtitle {
+      font-size: 36px;
+      line-height: 72px;
+      letter-spacing: 10.8px;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    content: '';
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgb(0, 0, 0, 0));
+  }
+}
+
+.navigation {
+  padding: 66px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 27px;
+  font-style: normal;
+  letter-spacing: normal;
+  text-transform: uppercase; //do wyrzucenia --> JS musi to robić
+
+
+  a {
+    text-decoration: none;
+    color: $color-two;
+    letter-spacing: 2.25px;
+    padding: 60px;
+
+    &:hover {
+      color: $color-one;
+    }
+  }
+}
