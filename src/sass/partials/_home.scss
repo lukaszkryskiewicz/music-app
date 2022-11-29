@@ -1,0 +1,114 @@
+.subscribe {
+  .subscription-background {
+    background-image: url("../../images/subscribe.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 1023px;
+    position: relative;
+    text-align: left;
+    letter-spacing: 20px;
+    line-height: normal;
+    color: $color-one;
+    font-size: 100px;
+    font-style: normal;
+
+    .subscription-title {
+      font-size: 100px;
+      //width: 1800px;
+      letter-spacing: 20px;
+      font-weight: $font-semibold;
+      position: absolute;
+      margin: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-transform: uppercase; //do wyrzucenia !! musi to robić JS
+
+
+      span {
+        font-weight: $font-black;
+      }
+
+    }
+
+    .artist-image {
+      box-shadow: 0 0 118px 24px rgba(0, 0, 0, 0.39);
+      position: absolute;
+      left: 70%;
+      top: 43%;
+      transform: translate(-50%, -50%);
+      width: 465px;
+      height: 578px;
+    }
+
+    .artist-name {
+      text-shadow: 0 0 118px rgba(0, 0, 0, 0.11);
+      font-size: 100px;
+      position: absolute;
+      left: 57%;
+      top: 43%;
+      transform: translate(-50%, -50%);
+
+      span {
+        color: $color-four;
+      }
+    }
+
+    .album-text {
+      text-align: right;
+      letter-spacing: 8px;
+      position: absolute;
+      left: 65%;
+      top: 81%;
+      transform: translate(-50%, -50%);
+      line-height: 0.4; // nie ma tego w psd - ale inaczej jest za dua interlinia
+
+      .album-text-title {
+        font-size: 40px;
+        color: #bfbfbf;
+        font-weight: $font-bold;
+        text-transform: uppercase; //do wyrzucenia !! musi to robić JS
+
+
+      }
+
+      .album-text-subtitle {
+        font-size: 40px;
+        font-weight: $font-semibold;
+        white-space: nowrap;
+      }
+    }
+
+    .call-to-action {
+      position: absolute;
+      left: 27%;
+      top: 55%;
+      transform: translate(-50%, -50%);
+
+      button {
+        width: 313px;
+        height: 133px;
+        box-shadow: 0 0 118px 24px rgba(0, 0, 0, 0.11);
+        background-color: $color-four;
+        text-align: center;
+        font-weight: $font-bold;
+        border-radius: 7%;
+        line-height: 0;
+
+
+
+        a {
+          text-decoration: none;
+          letter-spacing: 8px;
+          text-transform: uppercase; //do wyrzucenia !! musi to robić JS
+          font-size: 40px;
+          color: $color-one;
+          position: relative;
+          top: -5%; //to trzeba jakoś inaczej rozwiązać!!!
+        }
+      }
+    }
+
+
+  }
+}
