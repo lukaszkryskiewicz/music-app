@@ -11,6 +11,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -31,6 +33,31 @@
     </nav>
   </header>
 
+  <div id="pages">
+    <section id="home">
+      <div id="song-list"></div>
+    </section>
+  </div>
+
+  <script id="template-songs-list" type="text/x-handlebars-template">
+    <section class="songs container">
+      <div class="song-header">
+        <span class="song-artist">{{ author }}</span><span class="song-title"> - {{ title }}</span>
+      </div>
+      <div class="player-wrapper">
+        <div class="ready-player-{{ id }} player">
+          <audio>
+            <source src="songs/{{ filename }}" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+      <div class="under-player">
+        <span class="categories">Categories: {{categories}}</span>
+        <span class="ranking">#{{ranking}} in the ranking</span>
+      </div>
+    </section>
+  </script>
+
   <section class="subscribe">
     <div class="subscription-background">
       <h1 class="subscription-title">subscribe <span>now</span></h1>
@@ -42,19 +69,22 @@
         <p class="album-text-subtitle">Available only for subscribers</p>
       </div>
       <div class="call-to-action">
-        <button type="button">
+        <div class="button">
           <a href="#">Join now</a>
-        </button>
-      </div </div>
+        </div>
+      </div>
+    </div>
   </section>
 
 
   <footer>
-    <div class=" rights">
+    <div class="rights">
       <p>All right reserved</p>
     </div>
   </footer>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
+  <script src="/js/app.js" type="module"></script>
 </body>
 
 </html>

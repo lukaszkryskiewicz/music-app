@@ -1,4 +1,7 @@
 .subscribe {
+
+  margin-top: 151px;
+
   .subscription-background {
     background-image: url("../../images/subscribe.jpg");
     background-position: center;
@@ -85,7 +88,7 @@
       top: 55%;
       transform: translate(-50%, -50%);
 
-      button {
+      .button {
         width: 313px;
         height: 133px;
         box-shadow: 0 0 118px 24px rgba(0, 0, 0, 0.11);
@@ -93,20 +96,19 @@
         text-align: center;
         font-weight: $font-bold;
         border-radius: 7%;
-        line-height: 0;
-
-
-
-        a {
-          text-decoration: none;
-          letter-spacing: 8px;
-          text-transform: uppercase; //do wyrzucenia !! musi to robić JS
-          font-size: 40px;
-          color: $color-one;
-          position: relative;
-          top: -5%; //to trzeba jakoś inaczej rozwiązać!!!
-        }
+        line-height: 40px;
       }
+
+      .button a {
+        text-decoration: none;
+        letter-spacing: 8px;
+        text-transform: uppercase; //do wyrzucenia !! musi to robić JS
+        font-size: 40px;
+        color: $color-one;
+        position: relative;
+        top: 17%; //to trzeba jakoś inaczej rozwiązać!!!
+      }
+
     }
 
 

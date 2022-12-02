@@ -1,0 +1,40 @@
+.songs {
+
+  .song-header {
+    color: $color-one;
+    font-style: normal; //czy tego nie mozna wyrzucic? sprawdz
+    text-align: left;
+    margin: 41px;
+
+    .song-author {
+      letter-spacing: 2.25px;
+      line-height: normal;
+      text-transform: uppercase;
+    }
+
+    .song-title {
+      letter-spacing: 2.25px;
+      line-height: normal;
+    }
+  }
+
+  .player-wrapper {
+    margin: 13px;
+    padding: 10px;
+
+    .player {
+      width: 100%;
+    }
+  }
+
+  .under-player {
+    display: flex;
+    justify-content: space-around;
+    color: $color-two;
+    font-size: 20px;
+    text-align: left;
+    letter-spacing: 1.5px;
+    padding: 13px;
+
+  }
+}
