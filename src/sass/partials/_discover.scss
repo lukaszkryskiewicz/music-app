@@ -1,0 +1,19 @@
+.discover {
+  .discover-header {
+    padding: 100px 0 0 0;
+
+    .discover-title {
+      font-size: 60px;
+      letter-spacing: 12px;
+      text-transform: uppercase; //do wyrzucenia
+      padding: 0 0 50px 0;
+    }
+
+    .discover-subtitle {
+      color: $color-one;
+      letter-spacing: 6px;
+      font-size: 30px;
+      padding: 50px 0 50px 0;
+    }
+  }
+}

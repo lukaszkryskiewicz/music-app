@@ -35,7 +35,14 @@
 
   <div id="pages">
     <section id="home">
-      <div id="song-list"></div>
+      <div class="song-list"></div>
+      <div class="home-wrapper"></div>
+    </section>
+    <section id="serach">
+      <div class="'search-wrapper container"></div>
+    </section>
+    <section id="discover">
+      <div class="discover-wrapper container"></div>
     </section>
   </div>
 
@@ -58,23 +65,50 @@
     </section>
   </script>
 
-  <section class="subscribe">
-    <div class="subscription-background">
-      <h1 class="subscription-title">subscribe <span>now</span></h1>
-      <img class="artist-image" src="../../images/artist.jpg" alt="album-cover" title="album-cover">
-      <h2 class="artist-name">Dean<br>
-        &nbsp;&nbsp;Hen<span>son</span></h2>
-      <div class="album-text">
-        <h3 class="album-text-title">New album</h3>
-        <p class="album-text-subtitle">Available only for subscribers</p>
-      </div>
-      <div class="call-to-action">
-        <div class="button">
-          <a href="#">Join now</a>
+  <script id="template-home" type="text/x-handlebars-template">
+    <section class="subscribe">
+      <div class="subscription-background">
+        <h1 class="subscription-title">subscribe <span>now</span></h1>
+        <img class="artist-image" src="../../images/artist.jpg" alt="album-cover" title="album-cover">
+        <h2 class="artist-name">Dean<br>
+          &nbsp;&nbsp;Hen<span>son</span></h2>
+        <div class="album-text">
+          <h3 class="album-text-title">New album</h3>
+          <p class="album-text-subtitle">Available only for subscribers</p>
+        </div>
+        <div class="call-to-action">
+          <div class="button">
+            <a href="#">Join now</a>
+          </div>
         </div>
       </div>
+    </section>
+  </script>
+
+  <script id="template-discover" type="text/x-handlebars-template">
+    <section class="discover container">
+      <div class="discover-header">
+        <h1 class="discover-title">Discover</h1>
+        <h2 class="discover-subtitle">Give it a try!</h2>
+      </div>
+      <div class="songs">
+      <div class="song-header">
+        <span class="song-artist">{{ author }}</span><span class="song-title"> - {{ title }}</span>
+      </div>
+      <div class="player-wrapper">
+        <div class="ready-player-{{ id }} player">
+          <audio>
+            <source src="songs/{{ filename }}" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+      <div class="under-player">
+        <span class="categories">Categories: {{categories}}</span>
+        <span class="ranking">#{{ranking}} in the ranking</span>
+      </div>
     </div>
-  </section>
+    </section>
+  </script>
 
 
   <footer>

@@ -14,7 +14,7 @@ class SongPlayer {
 
   initPlugin() {
     const thisSongPlayer = this;
-
+    // eslint-disable-next-line no-undef
     thisSongPlayer.greenAudioPlayer = new GreenAudioPlayer(thisSongPlayer.playerId, {
       stopOthersOnPlay: true,
     });

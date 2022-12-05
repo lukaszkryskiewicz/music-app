@@ -1,16 +1,19 @@
-import { /*settings,*/ templates, select } from './settings.js';
-import utils from './utils.js';
+import { /*settings,*/ templates, select } from '../settings.js';
+import utils from '../utils.js';
 import songPlayer from './SongPlayer.js';
 
 class Song {
-  constructor(data) {
+  constructor(id, data) {
     const thisSong = this;
 
+    thisSong.id = id;
     thisSong.data = data;
-    console.log(thisSong.data.id);
 
     thisSong.renderSongs();
     thisSong.player();
+    thisSong.getSongElements(id, data);
+    // thisSong.prepareSongData();
+    //this.getSongElements(data);
   }
 
   renderSongs() {
@@ -25,10 +28,23 @@ class Song {
 
   player() {
     const thisSong = this;
+    console.log(thisSong.id);
 
-    thisSong.greenAudioPlayer = new songPlayer(thisSong.data.id, {
+    thisSong.greenAudioPlayer = new songPlayer(thisSong.id, {
       stopOthersOnPlay: true,
     });
+  }
+
+  getSongElements(id, data) {
+    const thisSong = this;
+
+    thisSong.songData = {}
+    thisSong.songData[id] = data;
+
+
+
+    console.log(thisSong.songData);
+
   }
 }
 
