@@ -1,13 +1,13 @@
 import { /*settings,*/ templates } from '../settings.js';
-import Song from './Song.js';
+import RandomSong from './RandomSong.js';
 
 class Discover {
   constructor(element, data) {
     const thisDiscover = this;
 
-    thisDiscover.render(element);
     thisDiscover.getRandom();
     thisDiscover.randomSong(thisDiscover.randomId, data);
+    thisDiscover.render(element);
 
 
   }
@@ -33,7 +33,7 @@ class Discover {
   randomSong(id, data) {
     const thisDiscover = this;
 
-    thisDiscover.randomSong = new Song(id, data);
+    thisDiscover.randomSong = new RandomSong(id, data);
   }
 }
 

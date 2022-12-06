@@ -11,9 +11,6 @@ class Song {
 
     thisSong.renderSongs();
     thisSong.player();
-    thisSong.getSongElements(id, data);
-    // thisSong.prepareSongData();
-    //this.getSongElements(data);
   }
 
   renderSongs() {
@@ -35,17 +32,6 @@ class Song {
     });
   }
 
-  getSongElements(id, data) {
-    const thisSong = this;
-
-    thisSong.songData = {}
-    thisSong.songData[id] = data;
-
-
-
-    console.log(thisSong.songData);
-
-  }
 }
 
 export default Song;

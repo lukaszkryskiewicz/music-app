@@ -38,11 +38,12 @@
       <div class="song-list"></div>
       <div class="home-wrapper"></div>
     </section>
-    <section id="serach">
+    <section id="search">
       <div class="'search-wrapper container"></div>
     </section>
     <section id="discover">
       <div class="discover-wrapper container"></div>
+      <div class="random-song"></div>
     </section>
   </div>
 
@@ -91,12 +92,17 @@
         <h1 class="discover-title">Discover</h1>
         <h2 class="discover-subtitle">Give it a try!</h2>
       </div>
+      </section>
+    </script>
+
+  <script id="template-random-song" type="text/x-handlebars-template">
+    <section class="random-song container">
       <div class="songs">
       <div class="song-header">
         <span class="song-artist">{{ author }}</span><span class="song-title"> - {{ title }}</span>
       </div>
       <div class="player-wrapper">
-        <div class="ready-player-{{ id }} player">
+        <div class="random-song-player player">
           <audio>
             <source src="songs/{{ filename }}" type="audio/mpeg">
           </audio>
@@ -109,6 +115,8 @@
     </div>
     </section>
   </script>
+
+
 
 
   <footer>
