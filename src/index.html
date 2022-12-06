@@ -39,7 +39,8 @@
       <div class="home-wrapper"></div>
     </section>
     <section id="search">
-      <div class="'search-wrapper container"></div>
+      <div class="search-wrapper container"></div>
+      <div class="search-song"></div>
     </section>
     <section id="discover">
       <div class="discover-wrapper container"></div>
@@ -116,7 +117,39 @@
     </section>
   </script>
 
+  <script id="template-search" type="text/x-handlebars-template">
+    <section class="search container">
+      <div class="search-header">
+        <h1 class="search-title">Search</h1>
+      </div>
+      <form class="song-search">
+        <label class="name" for="search">Name</label>
+        <input class="input-song" type="text" id="search-input" name="search-input">
+        <button class="search-button" type="submit"><span class="text-button">Search</span></button>
+      </form>
+    </section>
+  </script>
 
+  <script id="template-search-song" type="text/x-handlebars-template">
+    <section class="search-song container">
+      <div class="songs">
+      <div class="song-header">
+        <span class="song-artist">{{ author }}</span><span class="song-title"> - {{ title }}</span>
+      </div>
+      <div class="player-wrapper">
+        <div class="search-song-player-{{ id }} player">
+          <audio>
+            <source src="songs/{{ filename }}" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+      <div class="under-player">
+        <span class="categories">Categories: {{categories}}</span>
+        <span class="ranking">#{{ranking}} in the ranking</span>
+      </div>
+    </div>
+    </section>
+  </script>
 
 
   <footer>

@@ -2,6 +2,7 @@ import { classNames, settings/*, templates*/, select } from './settings.js';
 import Song from './components/Song.js';
 import Home from './components/Home.js';
 import Discover from './components/Discover.js';
+import Search from './components/Search.js';
 
 const app = {
   initData: function () {
@@ -97,6 +98,20 @@ const app = {
 
   },
 
+  initSearch: function () {
+    const thisApp = this;
+
+    thisApp.searchContainer = document.querySelector(select.containerOf.search);
+
+    console.log(thisApp.searchContainer);
+
+    const searchLink = document.querySelector('.menu-links a[href="#search"]');
+    searchLink.addEventListener('click', function () {
+      thisApp.Search = new Search(thisApp.searchContainer, thisApp.data.songs);
+    });
+
+  },
+
 
 
   init: function () {
@@ -105,7 +120,9 @@ const app = {
     thisApp.initData();
     thisApp.initPages();
     thisApp.initHome();
+    thisApp.initSearch();
     thisApp.initDiscover();
+
     console.log(thisApp.songData);
 
   }

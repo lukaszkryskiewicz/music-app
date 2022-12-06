@@ -1,0 +1,53 @@
+.search {
+  padding: 0;
+
+  .search-header {
+    padding: 100px 0 0 0;
+
+    .search-title {
+      font-size: 60px;
+      letter-spacing: 12px;
+      text-transform: uppercase; //do wyrzucenia
+      padding: 0 0 50px 0;
+    }
+  }
+
+  .song-search {
+    display: flex;
+    justify-content: space-around;
+    width: 643px;
+
+
+    .name {
+      letter-spacing: 6px;
+      padding: 10px;
+    }
+
+    .input-song {
+      margin: 0 25px 0 25px;
+      width: 355px;
+      height: 59px;
+      border-radius: 10%;
+    }
+
+
+    .search-button {
+      width: 139px;
+      height: 59px;
+      box-shadow: 0 0 54px 11px rgba(0, 0, 0, 0.11);
+      background-color: $color-four;
+      border-radius: 10%;
+      line-height: 0;
+
+
+      .text-button {
+        color: $color-one;
+        font-size: 20px;
+        text-transform: uppercase; //do wyrzucenia
+        letter-spacing: 4px;
+
+      }
+    }
+  }
+
+}

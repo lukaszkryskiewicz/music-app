@@ -3,7 +3,9 @@ export const select = {
     songsList: '#template-songs-list',
     home: '#template-home',
     discover: '#template-discover',
-    randomSong: '#template-random-song'
+    randomSong: '#template-random-song',
+    search: '#template-search',
+    searchSong: '#template-search-song',
   },
   containerOf: {
     songsList: '.song-list',
@@ -11,10 +13,16 @@ export const select = {
     discover: '.discover-wrapper',
     pages: '#pages',
     randomSong: '.random-song',
+    search: '.search-wrapper',
+    searchSong: '.search-song',
   },
 
   menu: {
     links: '.menu-links a',
+  },
+  search: {
+    input: '.input-song',
+    form: '.song-search',
   }
 };
 
@@ -40,4 +48,6 @@ export const templates = {
   home: Handlebars.compile(document.querySelector(select.templateOf.home).innerHTML),
   discover: Handlebars.compile(document.querySelector(select.templateOf.discover).innerHTML),
   randomSong: Handlebars.compile(document.querySelector(select.templateOf.randomSong).innerHTML),
+  search: Handlebars.compile(document.querySelector(select.templateOf.search).innerHTML),
+  searchSong: Handlebars.compile(document.querySelector(select.templateOf.searchSong).innerHTML),
 };
