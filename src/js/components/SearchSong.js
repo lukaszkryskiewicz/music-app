@@ -7,7 +7,7 @@ class SearchSong {
     const thisSearchSong = this;
 
     thisSearchSong.data = data;
-    console.log(thisSearchSong.data.id)
+    console.log(thisSearchSong.data.id);
     thisSearchSong.renderSongs();
     thisSearchSong.prepareId(thisSearchSong.data.id);
     thisSearchSong.initPlugin();

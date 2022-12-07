@@ -5,11 +5,9 @@ class Search {
   constructor(element, data) {
     const thisSearch = this;
 
-
     thisSearch.render(element);
     thisSearch.getElements();
     thisSearch.initWidget(data);
-
 
   }
 
@@ -30,6 +28,7 @@ class Search {
     thisSearch.dom.input = document.querySelector(select.search.input);
     thisSearch.dom.form = document.querySelector(select.search.form);
     thisSearch.input = thisSearch.dom.form.querySelector('.input-song');
+    thisSearch.dom.resultNumber = document.querySelector('.result-text');
   }
 
   initWidget(data) {
@@ -45,18 +44,29 @@ class Search {
 
 
   searchSong(searchValue, data) {
-    //const thisSearch = this;
+    const thisSearch = this;
+    thisSearch.songNumber = 0;
 
     for (const song of data) {
       if (song.title.toLowerCase().includes(searchValue.toLowerCase())) {
         new SearchSong(song);
-      } else {
-        console.log('test oblany')
-        console.log(song.title)
-        console.log(searchValue)
+        thisSearch.songNumber++;
       }
     }
+    thisSearch.printValue(thisSearch.songNumber);
   }
+
+  printValue(value) {
+    const thisSearch = this;
+
+    if (value == 1) {
+      thisSearch.dom.resultNumber.innerHTML = 'We have found ' + value + ' song...';
+    } else {
+      thisSearch.dom.resultNumber.innerHTML = 'We have found ' + value + ' songs...';
+    }
+  }
+
+
 }
 
 export default Search;

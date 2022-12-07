@@ -25,7 +25,6 @@
       margin: 0;
       left: 50%;
       transform: translate(-50%, -50%);
-      text-transform: uppercase; //do wyrzucenia !! musi to robić JS
 
 
       span {
@@ -70,7 +69,6 @@
         font-size: 40px;
         color: #bfbfbf;
         font-weight: $font-bold;
-        text-transform: uppercase; //do wyrzucenia !! musi to robić JS
 
 
       }
@@ -102,7 +100,6 @@
       .button a {
         text-decoration: none;
         letter-spacing: 8px;
-        text-transform: uppercase; //do wyrzucenia !! musi to robić JS
         font-size: 40px;
         color: $color-one;
         position: relative;

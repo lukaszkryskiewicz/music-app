@@ -5,10 +5,12 @@ class Discover {
   constructor(element, data) {
     const thisDiscover = this;
 
-    thisDiscover.getRandom();
-    thisDiscover.randomSong(thisDiscover.randomId, data);
-    thisDiscover.render(element);
+    thisDiscover.data = data;
 
+    thisDiscover.getRandom();
+    thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.data);
+    thisDiscover.render(element);
+    thisDiscover.initWidget();
 
   }
 
@@ -23,6 +25,18 @@ class Discover {
     thisDiscover.dom.wrapper.innerHTML = generatedHTML;
   }
 
+  initWidget() {
+    const thisDiscover = this;
+
+    thisDiscover.widget = thisDiscover.dom.wrapper.querySelector('.discover-subtitle');
+
+    thisDiscover.widget.addEventListener('click', function (event) {
+      event.preventDefault();
+      thisDiscover.getRandom();
+      thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.data);
+    });
+  }
+
   getRandom() {
     const thisDiscover = this;
 
@@ -33,7 +47,7 @@ class Discover {
   randomSong(id, data) {
     const thisDiscover = this;
 
-    thisDiscover.randomSong = new RandomSong(id, data);
+    thisDiscover.randomSongGenerator = new RandomSong(id, data);
   }
 }
 

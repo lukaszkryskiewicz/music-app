@@ -7,7 +7,6 @@
     .search-title {
       font-size: 60px;
       letter-spacing: 12px;
-      text-transform: uppercase; //do wyrzucenia
       padding: 0 0 50px 0;
     }
   }
@@ -43,10 +42,19 @@
       .text-button {
         color: $color-one;
         font-size: 20px;
-        text-transform: uppercase; //do wyrzucenia
         letter-spacing: 4px;
 
       }
+    }
+  }
+
+  .result {
+    color: $color-one;
+    margin: 90px 0 90px 0;
+
+    .result-text {
+      letter-spacing: 6px;
+      line-height: normal;
     }
   }
 

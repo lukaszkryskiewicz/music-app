@@ -112,6 +112,16 @@ const app = {
 
   },
 
+  initUpper: function () {
+    const thisApp = this;
+
+    thisApp.upperElements = document.querySelectorAll('.upper');
+
+    for (const element of thisApp.upperElements) {
+      element.style.textTransform = 'uppercase';
+    }
+  },
+
 
 
   init: function () {
@@ -122,6 +132,7 @@ const app = {
     thisApp.initHome();
     thisApp.initSearch();
     thisApp.initDiscover();
+    thisApp.initUpper();
 
     console.log(thisApp.songData);
 

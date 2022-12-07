@@ -19,12 +19,12 @@
 <body>
   <header>
     <div class="hero">
-      <div class="hero-inner">
+      <div class="hero-inner upper">
         <h1 class="hero-title">taste</h1>
         <h2 class="hero-subtitle">engage in art</h2> <!-- trzeba dać dodatkowe entery -->
       </div>
     </div>
-    <nav class="navigation">
+    <nav class="navigation upper">
       <div class="menu-links">
         <a href="#home">Home</a>
         <a href="#search">Search</a>
@@ -51,7 +51,7 @@
   <script id="template-songs-list" type="text/x-handlebars-template">
     <section class="songs container">
       <div class="song-header">
-        <span class="song-artist">{{ author }}</span><span class="song-title"> - {{ title }}</span>
+        <span class="song-author upper">{{ author }}</span><span class="song-title"> - {{ title }}</span>
       </div>
       <div class="player-wrapper">
         <div class="ready-player-{{ id }} player">
@@ -70,17 +70,17 @@
   <script id="template-home" type="text/x-handlebars-template">
     <section class="subscribe">
       <div class="subscription-background">
-        <h1 class="subscription-title">subscribe <span>now</span></h1>
+        <h1 class="subscription-title upper">subscribe <span>now</span></h1>
         <img class="artist-image" src="../../images/artist.jpg" alt="album-cover" title="album-cover">
         <h2 class="artist-name">Dean<br>
           &nbsp;&nbsp;Hen<span>son</span></h2>
         <div class="album-text">
-          <h3 class="album-text-title">New album</h3>
+          <h3 class="album-text-title upper">New album</h3>
           <p class="album-text-subtitle">Available only for subscribers</p>
         </div>
         <div class="call-to-action">
           <div class="button">
-            <a href="#">Join now</a>
+            <a href="join-now" class="upper">Join now</a>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
   <script id="template-discover" type="text/x-handlebars-template">
     <section class="discover container">
       <div class="discover-header">
-        <h1 class="discover-title">Discover</h1>
+        <h1 class="discover-title upper">Discover</h1>
         <h2 class="discover-subtitle">Give it a try!</h2>
       </div>
       </section>
@@ -120,13 +120,16 @@
   <script id="template-search" type="text/x-handlebars-template">
     <section class="search container">
       <div class="search-header">
-        <h1 class="search-title">Search</h1>
+        <h1 class="search-title upper">Search</h1>
       </div>
       <form class="song-search">
         <label class="name" for="search">Name</label>
         <input class="input-song" type="text" id="search-input" name="search-input">
-        <button class="search-button" type="submit"><span class="text-button">Search</span></button>
+        <button class="search-button" type="submit"><span class="text-button upper">Search</span></button>
       </form>
+      <div class="result">
+        <p class="result-text"></p>
+      </div>
     </section>
   </script>
 
