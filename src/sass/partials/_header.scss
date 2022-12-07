@@ -17,10 +17,10 @@
 
     .hero-title {
       text-shadow: 0 0 118px rgba(0, 0, 0, 0.39);
-      color: $color-one;
       font-size: 200px;
       font-weight: $font-bold;
       letter-spacing: 120px;
+
     }
 
     .hero-subtitle {
@@ -58,4 +58,99 @@
       color: $color-one;
     }
   }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .hero {
+    max-height: 650px;
+
+    .hero-inner {
+
+      .hero-title {
+        font-size: 100px;
+        letter-spacing: 30px;
+
+      }
+
+      .hero-subtitle {
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: 8px;
+      }
+    }
+  }
+
+  .navigation {
+    padding: 45px;
+    font-size: 40px;
+
+    a {
+      padding: 20px;
+
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .hero {
+    max-height: 650px;
+
+    .hero-inner {
+
+      .hero-title {
+        font-size: 100px;
+        letter-spacing: 30px;
+
+      }
+
+      .hero-subtitle {
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: 8px;
+      }
+    }
+  }
+
+  .navigation {
+    padding: 45px;
+    font-size: 40px;
+
+    a {
+      padding: 20px;
+
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    max-height: 450px;
+
+    .hero-inner {
+
+      .hero-title {
+        font-size: 50px;
+        letter-spacing: 10px;
+
+      }
+
+      .hero-subtitle {
+        font-size: 20px;
+        line-height: 36px;
+        letter-spacing: 5px;
+      }
+    }
+  }
+
+  .navigation {
+    padding: 30px;
+    font-size: 30px;
+
+    a {
+      display: block;
+      padding: 10px;
+
+    }
+  }
+
 }

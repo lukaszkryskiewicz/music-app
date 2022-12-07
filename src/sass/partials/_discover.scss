@@ -13,6 +13,24 @@
       letter-spacing: 6px;
       font-size: 30px;
       padding: 50px 0 50px 0;
+
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .discover {
+    .discover-header {
+      padding: 30px 0 0 0;
+
+      .discover-title {
+        font-size: 60px;
+        padding: 0 0 30px 0;
+      }
+
+      .discover-subtitle {
+        padding: 30px 0 30px 0;
+      }
     }
   }
 }

@@ -25,6 +25,7 @@
       margin: 0;
       left: 50%;
       transform: translate(-50%, -50%);
+      white-space: nowrap;
 
 
       span {
@@ -70,7 +71,6 @@
         color: #bfbfbf;
         font-weight: $font-bold;
 
-
       }
 
       .album-text-subtitle {
@@ -109,5 +109,172 @@
     }
 
 
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+
+  .subscribe {
+
+    .subscription-background {
+      letter-spacing: 15px;
+
+      .subscription-title {
+        font-size: 72px;
+        letter-spacing: 15px;
+      }
+
+      .artist-image {
+        width: 350px;
+        height: 437px;
+      }
+
+      .artist-name {
+        font-size: 72px;
+
+      }
+
+      .album-text {
+
+        .album-text-title {
+          font-size: 30px;
+        }
+
+        .album-text-subtitle {
+          font-size: 30px;
+
+        }
+      }
+
+      .call-to-action {
+
+        .button {
+          width: 250px;
+          height: 106px;
+        }
+
+        .button a {
+          font-size: 25px;
+        }
+
+      }
+
+
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .subscribe {
+
+    .subscription-background {
+      letter-spacing: 10px;
+
+      .subscription-title {
+        font-size: 52px;
+        letter-spacing: 10px;
+      }
+
+      .artist-image {
+        width: 300px;
+        height: 375px;
+      }
+
+      .artist-name {
+        font-size: 52px;
+
+      }
+
+      .album-text {
+
+        .album-text-title {
+          font-size: 20px;
+        }
+
+        .album-text-subtitle {
+          font-size: 20px;
+
+        }
+      }
+
+      .call-to-action {
+
+        .button {
+          width: 200px;
+          height: 85px;
+        }
+
+        .button a {
+          font-size: 18px;
+        }
+
+      }
+
+
+    }
+  }
+}
+
+@media (max-width: 767px) {
+
+  .subscribe {
+
+
+    .subscription-background {
+      min-height: 500px;
+      letter-spacing: 5px;
+      display: flex;
+
+      .subscription-title {
+        font-size: 30px;
+        letter-spacing: 5px;
+      }
+
+      .artist-image {
+        width: 160px;
+        height: 200px;
+      }
+
+      .artist-name {
+        font-size: 30px;
+
+      }
+
+      .album-text {
+        left: 75%;
+        top: 90%;
+
+        .album-text-title {
+          font-size: 15px;
+        }
+
+        .album-text-subtitle {
+          font-size: 15px;
+          white-space: normal;
+          line-height: normal;
+
+
+        }
+      }
+
+      .call-to-action {
+        left: 27%;
+        top: 70%;
+
+        .button {
+          width: 200px;
+          height: 50px;
+        }
+
+        .button a {
+          font-size: 15px;
+          top: -55%;
+        }
+
+      }
+
+
+    }
   }
 }
