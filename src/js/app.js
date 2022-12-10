@@ -1,4 +1,4 @@
-import { classNames, settings/*, templates*/, select } from './settings.js';
+import { classNames, settings, templates, select } from './settings.js';
 import Song from './components/Song.js';
 import Home from './components/Home.js';
 import Discover from './components/Discover.js';
@@ -29,8 +29,10 @@ const app = {
     const thisApp = this;
     thisApp.songList = thisApp.data.songs;
 
+    const songWrapper = select.containerOf.songsList;
+
     for (let song in thisApp.data.songs) {
-      new Song(thisApp.data.songs[song].id, thisApp.data.songs[song]); //moze zmienić na stałą?
+      new Song(thisApp.songList[song].id, thisApp.songList[song], songWrapper); //moze zmienić na stałą? TERAZ TRZEBA SKOPIOWAC TO NA SEARCH SONG I RANDOM SONG!!!! 
 
     }
   },

@@ -1,5 +1,5 @@
-import { /*settings,*/ templates } from '../settings.js';
-import RandomSong from './RandomSong.js';
+import { /*settings,*/ select, templates } from '../settings.js';
+import Song from './Song.js';
 
 class Discover {
   constructor(element, data) {
@@ -7,8 +7,9 @@ class Discover {
 
     thisDiscover.data = data;
 
-    thisDiscover.getRandom();
-    thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.data);
+
+    // thisDiscover.getRandom();
+    //thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.data[thisDiscover.randomId]);
     thisDiscover.render(element);
     thisDiscover.initWidget();
 
@@ -39,15 +40,19 @@ class Discover {
 
   getRandom() {
     const thisDiscover = this;
-
-    thisDiscover.randomId = Math.floor(Math.random() * (5 - 1) + 1);
-    console.log(thisDiscover.randomId);
+    thisDiscover.randomId = Math.floor(Math.random() * thisDiscover.data.length + 1);
   }
 
   randomSong(id, data) {
     const thisDiscover = this;
 
-    thisDiscover.randomSongGenerator = new RandomSong(id, data);
+    const randomSongWrapper = select.containerOf.randomSong;
+    const songContainer = document.querySelector(randomSongWrapper);
+    songContainer.innerHTML = '';
+
+    thisDiscover.randomSongGenerator = new Song(id, data[id - 1], randomSongWrapper);
+
+    //thisDiscover.randomSongGenerator = new RandomSong(id, data);
   }
 }
 

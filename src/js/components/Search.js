@@ -1,5 +1,5 @@
 import { /*settings,*/ templates, select } from '../settings.js';
-import SearchSong from './SearchSong.js';
+import Song from './Song.js';
 
 class Search {
   constructor(element, data) {
@@ -47,9 +47,11 @@ class Search {
     const thisSearch = this;
     thisSearch.songNumber = 0;
 
+    const searchSongWrapper = select.containerOf.searchSong;
+
     for (const song of data) {
       if (song.title.toLowerCase().includes(searchValue.toLowerCase())) {
-        new SearchSong(song);
+        new Song(song.id, song, searchSongWrapper);
         thisSearch.songNumber++;
       }
     }

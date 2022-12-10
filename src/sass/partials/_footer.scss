@@ -8,3 +8,9 @@ footer {
     color: $font-one;
   }
 }
+
+@media (max-width: 768px) {
+  footer {
+    margin: 50px 0 50px 0;
+  }
+}

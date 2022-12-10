@@ -1,15 +1,15 @@
 class SongPlayer {
-  constructor(dataId) {
+  constructor(sectionId, dataId) {
     const thisSongPlayer = this;
 
-    thisSongPlayer.render(dataId);
+    thisSongPlayer.render(sectionId, dataId);
     thisSongPlayer.initPlugin();
   }
 
-  render(dataId) {
+  render(sectionId, dataId) {
     const thisSongPlayer = this;
 
-    thisSongPlayer.playerId = ('.ready-player-' + dataId);
+    thisSongPlayer.playerId = (sectionId + ' .ready-player-' + dataId);
   }
 
   initPlugin() {

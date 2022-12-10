@@ -41,11 +41,11 @@
     </section>
     <section id="search">
       <div class="search-wrapper container"></div>
-      <div class="search-song"></div>
+      <div class="song-list"></div>
     </section>
     <section id="discover">
       <div class="discover-wrapper container"></div>
-      <div class="random-song"></div>
+      <div class="song-list"></div>
     </section>
   </div>
 
@@ -97,27 +97,6 @@
       </section>
     </script>
 
-  <script id="template-random-song" type="text/x-handlebars-template">
-    <section class="random-song container">
-      <div class="songs">
-      <div class="song-header">
-        <span class="song-artist">{{ author }}</span><span class="song-title"> - {{ title }}</span>
-      </div>
-      <div class="player-wrapper">
-        <div class="random-song-player player">
-          <audio>
-            <source src="songs/{{ filename }}" type="audio/mpeg">
-          </audio>
-        </div>
-      </div>
-      <div class="under-player">
-        <span class="categories">Categories: {{categories}}</span>
-        <span class="ranking">#{{ranking}} in the ranking</span>
-      </div>
-    </div>
-    </section>
-  </script>
-
   <script id="template-search" type="text/x-handlebars-template">
     <section class="search container">
       <div class="search-header">
@@ -133,28 +112,6 @@
       </div>
     </section>
   </script>
-
-  <script id="template-search-song" type="text/x-handlebars-template">
-    <section class="search-song container">
-      <div class="songs">
-      <div class="song-header">
-        <span class="song-artist">{{ author }}</span><span class="song-title"> - {{ title }}</span>
-      </div>
-      <div class="player-wrapper">
-        <div class="search-song-player-{{ id }} player">
-          <audio>
-            <source src="songs/{{ filename }}" type="audio/mpeg">
-          </audio>
-        </div>
-      </div>
-      <div class="under-player">
-        <span class="categories">Categories: {{categories}}</span>
-        <span class="ranking">#{{ranking}} in the ranking</span>
-      </div>
-    </div>
-    </section>
-  </script>
-
 
   <footer>
     <div class="rights">
