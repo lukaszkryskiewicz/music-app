@@ -1,3 +1,5 @@
+import { select } from '../settings.js';
+
 class SongPlayer {
   constructor(sectionId, dataId) {
     const thisSongPlayer = this;
@@ -9,7 +11,7 @@ class SongPlayer {
   render(sectionId, dataId) {
     const thisSongPlayer = this;
 
-    thisSongPlayer.playerId = (sectionId + ' .ready-player-' + dataId);
+    thisSongPlayer.playerId = (sectionId + ' ' + select.player.ready + dataId);
   }
 
   initPlugin() {

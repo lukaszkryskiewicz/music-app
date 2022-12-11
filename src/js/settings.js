@@ -14,14 +14,25 @@ export const select = {
     search: '.search-wrapper',
     searchSong: '#search .song-list',
   },
-
   menu: {
     links: '.menu-links a',
   },
   search: {
     input: '.input-song',
     form: '.song-search',
+    result: '.result-text',
+  },
+  link: {
+    search: '.menu-links a[href="#search"]',
+    discover: '.menu-links a[href="#discover"]',
+  },
+  discover: {
+    subtitle: '.discover-subtitle',
+  },
+  player: {
+    ready: '.ready-player-'
   }
+
 };
 
 export const settings = {
@@ -38,7 +49,7 @@ export const classNames = {
 
   nav: {
     active: 'active',
-  }
+  },
 };
 
 export const templates = {

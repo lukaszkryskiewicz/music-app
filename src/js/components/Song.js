@@ -18,7 +18,6 @@ class Song {
     const thisSong = this;
 
     const generatedHTML = templates.songsList(thisSong.data);
-    console.log(thisSong.data);
     thisSong.element = utils.createDOMFromHTML(generatedHTML);
     const songContainer = document.querySelector(wrapper);
     songContainer.appendChild(thisSong.element);
@@ -27,7 +26,6 @@ class Song {
 
   player() {
     const thisSong = this;
-    console.log(thisSong.id);
 
     thisSong.greenAudioPlayer = new songPlayer(thisSong.wrapper, thisSong.id, {
       stopOthersOnPlay: true,

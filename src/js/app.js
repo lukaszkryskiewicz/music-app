@@ -1,4 +1,4 @@
-import { classNames, settings, templates, select } from './settings.js';
+import { classNames, settings, select } from './settings.js';
 import Song from './components/Song.js';
 import Home from './components/Home.js';
 import Discover from './components/Discover.js';
@@ -16,9 +16,7 @@ const app = {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
-        console.log('parsedResponse', parsedResponse);
         thisApp.data.songs = parsedResponse;
-        console.log(thisApp.data.songs);
         thisApp.initSongs();
       });
 
@@ -31,8 +29,8 @@ const app = {
 
     const songWrapper = select.containerOf.songsList;
 
-    for (let song in thisApp.data.songs) {
-      new Song(thisApp.songList[song].id, thisApp.songList[song], songWrapper); //moze zmienić na stałą? TERAZ TRZEBA SKOPIOWAC TO NA SEARCH SONG I RANDOM SONG!!!! 
+    for (let song in thisApp.songList) {
+      new Song(thisApp.songList[song].id, thisApp.songList[song], songWrapper);
 
     }
   },
@@ -42,7 +40,6 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.menuLinks = document.querySelectorAll(select.menu.links);
-    console.log(thisApp.menuLinks);
 
 
     thisApp.activatePage(thisApp.pages[0].id);
@@ -61,8 +58,6 @@ const app = {
 
   activatePage: function (pageId) {
     const thisApp = this;
-
-    console.log(pageId);
 
     for (let page of thisApp.pages) {
       page.classList.toggle(classNames.pages.active, page.id == pageId);
@@ -85,7 +80,7 @@ const app = {
 
     thisApp.homeContainer = document.querySelector(select.containerOf.home);
 
-    thisApp.Home = new Home(thisApp.homeContainer);
+    thisApp.home = new Home(thisApp.homeContainer);
   },
 
   initDiscover: function () {
@@ -93,9 +88,10 @@ const app = {
 
     thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
 
-    const discoverLink = document.querySelector('.menu-links a[href="#discover"]');
+    const discoverLink = document.querySelector(select.link.discover);
     discoverLink.addEventListener('click', function () {
-      thisApp.Discover = new Discover(thisApp.discoverContainer, thisApp.data.songs);
+      thisApp.discover = new Discover(thisApp.discoverContainer, thisApp.data.songs);
+      thisApp.initUpper();
     });
 
   },
@@ -105,11 +101,10 @@ const app = {
 
     thisApp.searchContainer = document.querySelector(select.containerOf.search);
 
-    console.log(thisApp.searchContainer);
-
-    const searchLink = document.querySelector('.menu-links a[href="#search"]');
+    const searchLink = document.querySelector(select.link.search);
     searchLink.addEventListener('click', function () {
-      thisApp.Search = new Search(thisApp.searchContainer, thisApp.data.songs);
+      thisApp.search = new Search(thisApp.searchContainer, thisApp.data.songs);
+      thisApp.initUpper();
     });
 
   },
@@ -135,8 +130,6 @@ const app = {
     thisApp.initSearch();
     thisApp.initDiscover();
     thisApp.initUpper();
-
-    console.log(thisApp.songData);
 
   }
 };

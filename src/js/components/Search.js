@@ -15,7 +15,6 @@ class Search {
     const thisSearch = this;
 
     const generatedHTML = templates.search();
-    console.log(element);
 
     thisSearch.dom = {};
     thisSearch.dom.wrapper = element;
@@ -25,10 +24,9 @@ class Search {
   getElements() {
     const thisSearch = this;
 
-    thisSearch.dom.input = document.querySelector(select.search.input);
     thisSearch.dom.form = document.querySelector(select.search.form);
-    thisSearch.input = thisSearch.dom.form.querySelector('.input-song');
-    thisSearch.dom.resultNumber = document.querySelector('.result-text');
+    thisSearch.input = thisSearch.dom.form.querySelector(select.search.input);
+    thisSearch.dom.resultNumber = document.querySelector(select.search.result);
   }
 
   initWidget(data) {
