@@ -1,0 +1,21 @@
+.categories {
+  .categories-text {
+    font-size: 18px;
+    letter-spacing: 4px;
+
+    .categories-title {
+      display: inline;
+      color: $color-one;
+    }
+
+    .categories-list {
+      display: inline;
+    }
+
+    .active {
+      color: $color-four;
+      font-weight: bold;
+    }
+
+  }
+}

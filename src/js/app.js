@@ -3,6 +3,7 @@ import Song from './components/Song.js';
 import Home from './components/Home.js';
 import Discover from './components/Discover.js';
 import Search from './components/Search.js';
+import Categories from './components/Categories.js';
 
 const app = {
   initData: function () {
@@ -20,19 +21,35 @@ const app = {
         thisApp.initSongs();
       });
 
-
   },
 
   initSongs: function () {
     const thisApp = this;
     thisApp.songList = thisApp.data.songs;
+    thisApp.songCategories = [];
 
     const songWrapper = select.containerOf.songsList;
 
     for (let song in thisApp.songList) {
       new Song(thisApp.songList[song].id, thisApp.songList[song], songWrapper);
-
+      for (let category of thisApp.songList[song].categories) {
+        if (thisApp.songCategories.indexOf(category) == -1) {
+          thisApp.songCategories.push(category);
+        }
+      }
     }
+
+    thisApp.initCategories(thisApp.songCategories);
+  },
+
+  initCategories: function (categories) {
+    const thisApp = this;
+    thisApp.categoriesObject = { categories };
+
+    thisApp.categoriesContainer = document.querySelector(select.containerOf.categories);
+
+    thisApp.categories = new Categories(thisApp.categoriesContainer, thisApp.categoriesObject, thisApp.data);
+
   },
 
   initPages: function () {
@@ -126,9 +143,11 @@ const app = {
 
     thisApp.initData();
     thisApp.initPages();
+    //  thisApp.initCategories();
     thisApp.initHome();
     thisApp.initSearch();
     thisApp.initDiscover();
+
     thisApp.initUpper();
 
   }

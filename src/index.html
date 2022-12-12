@@ -36,6 +36,7 @@
 
   <div id="pages">
     <section id="home">
+      <div class="categories-wrapper"></div>
       <div class="song-list"></div>
       <div class="home-wrapper"></div>
     </section>
@@ -50,7 +51,7 @@
   </div>
 
   <script id="template-songs-list" type="text/x-handlebars-template">
-    <section class="songs container">
+    <section class="songs container song-{{ id }}">
       <div class="song-header">
         <span class="song-author upper">{{ author }}</span><span class="song-title"> - {{ title }}</span>
       </div>
@@ -65,6 +66,21 @@
         <span class="categories">Categories: {{categories}}</span>
         <span class="ranking">#{{ranking}} in the ranking</span>
       </div>
+    </section>
+  </script>
+
+  <script id="template-categories" type="text/x-handlebars-template">
+    <section class="categories container">
+        <div class="categories-text"><p class="categories-title">Categories: </p>
+         
+            <div class='categories-list'>
+              {{#each categories}}
+             <span class="category category-{{this}}" id="{{this}}">
+             {{this}}, 
+             </span>
+             {{/each}}
+            </div>
+       </div>
     </section>
   </script>
 
