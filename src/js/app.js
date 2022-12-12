@@ -120,7 +120,7 @@ const app = {
 
     const searchLink = document.querySelector(select.link.search);
     searchLink.addEventListener('click', function () {
-      thisApp.search = new Search(thisApp.searchContainer, thisApp.data.songs);
+      thisApp.search = new Search(thisApp.searchContainer, thisApp.data.songs, thisApp.categoriesObject);
       thisApp.initUpper();
     });
 

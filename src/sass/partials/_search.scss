@@ -11,41 +11,42 @@
     }
   }
 
-  .song-search {
+  .main-input {
     display: flex;
     justify-content: space-around;
     width: 643px;
 
 
-    .name {
+    .search-option {
       letter-spacing: 6px;
       padding: 10px;
     }
 
-    .input-song {
+    .input-song,
+    .category-input {
       margin: 0 25px 0 25px;
-      width: 355px;
+      width: 200px;
       height: 59px;
       border-radius: 10%;
     }
+  }
 
+  .search-button {
+    width: 139px;
+    height: 59px;
+    box-shadow: 0 0 54px 11px rgba(0, 0, 0, 0.11);
+    background-color: $color-four;
+    border-radius: 10%;
+    line-height: 0;
+    margin: 25px;
 
-    .search-button {
-      width: 139px;
-      height: 59px;
-      box-shadow: 0 0 54px 11px rgba(0, 0, 0, 0.11);
-      background-color: $color-four;
-      border-radius: 10%;
-      line-height: 0;
+    .text-button {
+      color: $color-one;
+      font-size: 20px;
+      letter-spacing: 4px;
 
-
-      .text-button {
-        color: $color-one;
-        font-size: 20px;
-        letter-spacing: 4px;
-
-      }
     }
+
   }
 
   .result {
@@ -73,11 +74,11 @@
       margin: 0 auto;
 
 
-      .name {
+      .search-option {
         padding: 10px;
       }
 
-      .input-song {
+      .input-style {
         margin: 20px auto;
         width: 300px;
       }

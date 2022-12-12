@@ -23,6 +23,7 @@ export const select = {
     input: '.input-song',
     form: '.song-search',
     result: '.result-text',
+    category: '.category-input'
   },
   link: {
     search: '.menu-links a[href="#search"]',

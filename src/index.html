@@ -119,8 +119,19 @@
         <h1 class="search-title upper">Search</h1>
       </div>
       <form class="song-search">
-        <label class="name" for="search">Name</label>
-        <input class="input-song" type="text" id="search-input" name="search-input">
+        <div class="main-input">
+        <label class="name search-option" for="search">Name</label>
+        <input class="input-song input-style" type="text" id="search-input" name="search-input">
+        <label class="category search-option" for="search">Category</label>
+        <select class="category-input" name="category-select" id="category-select">
+          <option value=""></option>
+          {{#each categories}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        
+        </select>
+      </div>
+      
         <button class="search-button" type="submit"><span class="text-button upper">Search</span></button>
       </form>
       <div class="result">
