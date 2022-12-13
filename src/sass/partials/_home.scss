@@ -95,6 +95,9 @@
         font-weight: $font-bold;
         border-radius: 7%;
         line-height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .button a {
@@ -103,7 +106,7 @@
         font-size: 40px;
         color: $color-one;
         position: relative;
-        top: 17%; //to trzeba jakoś inaczej rozwiązać!!!
+
       }
 
     }
