@@ -47,7 +47,7 @@ class Discover {
     const songContainer = document.querySelector(randomSongWrapper);
     songContainer.innerHTML = '';
 
-    thisDiscover.randomSongGenerator = new Song(id, data[id - 1], randomSongWrapper);
+    thisDiscover.randomSongGenerator = new Song(/*id,*/ data[id - 1], randomSongWrapper);
   }
 }
 

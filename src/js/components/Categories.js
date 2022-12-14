@@ -41,6 +41,7 @@ class Categories {
         thisCategories.clickedCategory = null;
       }
 
+
       thisCategories.clickedCategory = thisCategories.clickedCategory ? null : clickedElement.id;
       clickedElement.classList.toggle('active');
 
@@ -67,7 +68,7 @@ class Categories {
   filterSongs(category) {
     const thisCategories = this;
 
-    if (category == 0) {
+    if (category == null) {
       for (const hiddenSong of thisCategories.hiddenSongs) {
         const hiddenSongFinder = document.querySelector('#home .song-' + hiddenSong.id);
         hiddenSongFinder.classList.remove('hidden');

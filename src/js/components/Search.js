@@ -51,11 +51,11 @@ class Search {
     for (const song of data) {
       if (categoryValue == 0) {
         if (song.title.toLowerCase().includes(nameValue.toLowerCase())) {
-          new Song(song.id, song, searchSongWrapper);
+          new Song(/*song.id,*/ song, searchSongWrapper);
           thisSearch.songNumber++;
         }
       } else if (song.title.toLowerCase().includes(nameValue.toLowerCase()) && (song.categories.indexOf(categoryValue) != -1)) {
-        new Song(song.id, song, searchSongWrapper);
+        new Song(/*song.id,*/ song, searchSongWrapper);
         thisSearch.songNumber++;
       }
     }

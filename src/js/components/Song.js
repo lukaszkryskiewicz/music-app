@@ -3,10 +3,10 @@ import utils from '../utils.js';
 import songPlayer from './SongPlayer.js';
 
 class Song {
-  constructor(id, data, wrapper) {
+  constructor(/*id,*/ data, wrapper) {
     const thisSong = this;
 
-    thisSong.id = id;
+    //thisSong.id = id;
     thisSong.data = data;
     thisSong.wrapper = wrapper;
 
@@ -27,7 +27,7 @@ class Song {
   player() {
     const thisSong = this;
 
-    thisSong.greenAudioPlayer = new songPlayer(thisSong.wrapper, thisSong.id, {
+    thisSong.greenAudioPlayer = new songPlayer(thisSong.wrapper, thisSong.data.id, {
       stopOthersOnPlay: true,
     });
   }

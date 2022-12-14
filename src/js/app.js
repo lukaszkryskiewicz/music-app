@@ -4,12 +4,16 @@ import Home from './components/Home.js';
 import Discover from './components/Discover.js';
 import Search from './components/Search.js';
 import Categories from './components/Categories.js';
+import NewDiscover from './components/NewDiscover.js';
 
 const app = {
   initData: function () {
     const thisApp = this;
 
     thisApp.data = {};
+    thisApp.listenedSongsCatObj = {};
+    thisApp.listenedSongsCounter = 0;
+    thisApp.playedSongId = null;//czy to na pewno tutaj??
     const url = settings.db.url + '/' + settings.db.songs;
 
     fetch(url)
@@ -23,6 +27,8 @@ const app = {
       .then(function () {
         thisApp.initSearch();
         thisApp.initDiscover();
+        thisApp.newDiscover();
+
       });
   },
 
@@ -34,14 +40,13 @@ const app = {
     thisApp.songHomeWrapper = select.containerOf.songsList;
 
     for (let song in thisApp.songList) {
-      new Song(thisApp.songList[song].id, thisApp.songList[song], thisApp.songHomeWrapper);
+      new Song(/*thisApp.songList[song].id,*/ thisApp.songList[song], thisApp.songHomeWrapper);
       for (let category of thisApp.songList[song].categories) {
         if (thisApp.songCategories.indexOf(category) == -1) {
           thisApp.songCategories.push(category);
         }
       }
     }
-    thisApp.newDiscover();
 
     thisApp.initCategories(thisApp.songCategories);
   },
@@ -141,19 +146,37 @@ const app = {
     }
   },
 
-  /*  newDiscover: function () {
-     const thisApp = this;
- 
-     thisApp.listenedSongsArray = [];
-     thisApp.listenedSongsNumber = 0;
- 
-     thisApp.homePlayers = document.querySelectorAll('#home .player');
-     for (const player of thisApp.homePlayers) {
-       console.log(player);
-     }
- 
- 
-   }, */
+  newDiscover: function () {
+    const thisApp = this;
+
+    thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
+
+    thisApp.homePlayers = document.querySelectorAll('#home .songs');
+    for (const player of thisApp.homePlayers) {
+      const playButton = player.querySelector('audio');
+      playButton.addEventListener('play', function () {
+        console.log(player.className.slice(-1));
+        if (thisApp.playedSongId !== player.className.slice(-1)) {
+          thisApp.playedSongId = player.className.slice(-1);
+          const playedSongCategories = thisApp.data.songs[thisApp.playedSongId - 1].categories;
+          for (let songCategory of playedSongCategories) {
+            if (typeof thisApp.listenedSongsCatObj[songCategory] == 'undefined') {
+              thisApp.listenedSongsCatObj[songCategory] = 1;
+            } else thisApp.listenedSongsCatObj[songCategory]++;
+          }
+          console.log(thisApp.listenedSongsCatObj);
+          thisApp.listenedSongsCounter++;
+          console.log(thisApp.listenedSongsCounter);
+
+
+          thisApp.discover = new NewDiscover(thisApp.discoverContainer, thisApp.data.songs, thisApp.listenedSongsCounter, thisApp.listenedSongsCatObj);
+        }
+      });
+
+    }
+
+
+  },
 
 
 
