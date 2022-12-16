@@ -1,9 +1,8 @@
-import { select } from '../settings.js';
-import Discover from './Discover.js';
+import { templates, select } from '../settings.js';
+import Song from './Song.js';
 
-class NewDiscover extends Discover {
+class NewDiscover {
   constructor(element, data, songCounter, listenedSongsCatObj) {
-    super(element, data);
     const thisDiscover = this;
 
     thisDiscover.data = data;
@@ -13,6 +12,16 @@ class NewDiscover extends Discover {
     thisDiscover.render(element);
     thisDiscover.initWidget();
 
+  }
+
+  render(element) {
+    const thisDiscover = this;
+
+    const generatedHTML = templates.discover();
+
+    thisDiscover.dom = {};
+    thisDiscover.dom.wrapper = element;
+    thisDiscover.dom.wrapper.innerHTML = generatedHTML;
   }
 
   initWidget() {
@@ -29,6 +38,21 @@ class NewDiscover extends Discover {
         thisDiscover.playPersonalizedSong();
       }
     });
+  }
+
+  getRandom(data) {
+    const thisDiscover = this;
+    thisDiscover.randomId = Math.floor(Math.random() * data.length + 1);
+  }
+
+  randomSong(id, data) {
+    const thisDiscover = this;
+
+    const randomSongWrapper = select.containerOf.randomSong;
+    const songContainer = document.querySelector(randomSongWrapper);
+    songContainer.innerHTML = '';
+
+    thisDiscover.randomSongGenerator = new Song(data[id - 1], randomSongWrapper);
   }
 
   playPersonalizedSong() {

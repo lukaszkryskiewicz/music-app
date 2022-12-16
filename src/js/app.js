@@ -1,7 +1,7 @@
 import { classNames, settings, select } from './settings.js';
 import Song from './components/Song.js';
 import Home from './components/Home.js';
-import Discover from './components/Discover.js';
+//import Discover from './components/Discover.js';
 import Search from './components/Search.js';
 import Categories from './components/Categories.js';
 import NewDiscover from './components/NewDiscover.js';
@@ -23,7 +23,8 @@ const app = {
       })
       .then(function () {
         thisApp.initSearch();
-        thisApp.initDiscover();
+        //thisApp.initDiscover();
+        thisApp.newDiscover();
 
       });
   },
@@ -112,14 +113,14 @@ const app = {
     thisApp.home = new Home(thisApp.homeContainer);
   },
 
-  initDiscover: function () {
-    const thisApp = this;
-
-    thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
-
-    thisApp.discover = new Discover(thisApp.discoverContainer, thisApp.data.songs);
-    thisApp.newDiscover();
-  },
+  /*  initDiscover: function () {
+     const thisApp = this;
+ 
+     thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
+ 
+     // thisApp.discover = new Discover(thisApp.discoverContainer, thisApp.data.songs);
+     thisApp.newDiscover();
+   }, */
 
   initSearch: function () {
     const thisApp = this;
@@ -146,6 +147,8 @@ const app = {
     thisApp.listenedSongsCatObj = {};
     thisApp.listenedSongsCounter = 0;
     thisApp.playedSongId = null;
+    thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
+
 
     thisApp.homePlayers = document.querySelectorAll('#home .songs');
     for (const player of thisApp.homePlayers) {
@@ -170,7 +173,7 @@ const app = {
       });
 
     }
-
+    thisApp.discover = new NewDiscover(thisApp.discoverContainer, thisApp.data.songs, thisApp.listenedSongsCounter, thisApp.listenedSongsCatObj);
 
   },
 
