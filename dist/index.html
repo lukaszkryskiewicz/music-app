@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TASTE Music Portal</title>
+  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="hero">
+      <div class="hero-inner upper">
+        <h1 class="hero-title">tast<span class="last-letter">e</span></h1>
+        <h2 class="hero-subtitle">engage<br>in<br>art</h2>
+      </div>
+    </div>
+    <nav class="navigation upper">
+      <div class="menu-links">
+        <a href="#home">Home</a>
+        <a href="#search">Search</a>
+        <a href="#discover">Discover</a>
+      </div>
+    </nav>
+  </header>
+
+  <div id="pages">
+    <section id="home">
+      <div class="categories-wrapper"></div>
+      <div class="song-list"></div>
+      <div class="home-wrapper"></div>
+    </section>
+    <section id="search">
+      <div class="search-wrapper container"></div>
+      <div class="song-list"></div>
+    </section>
+    <section id="discover">
+      <div class="discover-wrapper container"></div>
+      <div class="song-list"></div>
+    </section>
+  </div>
+
+  <script id="template-songs-list" type="text/x-handlebars-template">
+    <section class="songs container song-{{ id }}">
+      <div class="song-header">
+        <span class="song-author upper">{{ author }}</span><span class="song-title"> - {{ title }}</span>
+      </div>
+      <div class="player-wrapper">
+        <div class="ready-player-{{ id }} player">
+          <audio>
+            <source src="songs/{{ filename }}" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+      <div class="under-player">
+        <span class="categories">Categories: {{categories}}</span>
+        <span class="ranking">#{{ranking}} in the ranking</span>
+      </div>
+    </section>
+  </script>
+
+  <script id="template-categories" type="text/x-handlebars-template">
+    <section class="categories container">
+        <div class="categories-text"><p class="categories-title">Categories: </p>
+         
+            <div class='categories-list'>
+              {{#each categories}}
+             <span class="category category-{{this}}" id="{{this}}">
+             {{this}}</span>,
+             {{/each}}
+            </div>
+       </div>
+    </section>
+  </script>
+
+  <script id="template-home" type="text/x-handlebars-template">
+    <section class="subscribe">
+      <div class="subscription-background">
+        <h1 class="subscription-title upper">subscribe <span>now</span></h1>
+          <img class="artist-image" src="../../images/artist.jpg" alt="album-cover" title="album-cover">
+        <h2 class="artist-name">Dean<br>
+          &nbsp;&nbsp;Hen<span>son</span></h2>
+        <div class="album-text">
+          <h3 class="album-text-title upper">New album</h3>
+          <p class="album-text-subtitle">Available only for subscribers</p>
+        </div>
+        <div class="call-to-action">
+          <div class="button">
+            <a href="join-now" class="upper">Join now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </script>
+
+  <script id="template-discover" type="text/x-handlebars-template">
+    <section class="discover container">
+      <div class="discover-header">
+        <h1 class="discover-title upper">Discover</h1>
+        <h2 class="discover-subtitle">Give it a try!</h2>
+      </div>
+      </section>
+    </script>
+
+  <script id="template-search" type="text/x-handlebars-template">
+    <section class="search container">
+      <div class="search-header">
+        <h1 class="search-title upper">Search</h1>
+      </div>
+      <form class="song-search">
+        <div class="main-input">
+        <label class="name search-option" for="search">Name</label>
+        <input class="input-song input-style" type="text" id="search-input" name="search-input">
+        <label class="category search-option" for="search">Category</label>
+        <select class="category-input" name="category-select" id="category-select">
+          <option value=""></option>
+          {{#each categories}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        
+        </select>
+      </div>
+      
+        <button class="search-button" type="submit"><span class="text-button upper">Search</span></button>
+      </form>
+      <div class="result">
+        <p class="result-text"></p>
+      </div>
+    </section>
+  </script>
+
+  <footer>
+    <div class="rights">
+      <p>All right reserved</p>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
+  <script src="/js/app.js" type="module"></script>
+</body>
+
+</html>
