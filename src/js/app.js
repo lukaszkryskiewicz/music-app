@@ -11,9 +11,6 @@ const app = {
     const thisApp = this;
 
     thisApp.data = {};
-    thisApp.listenedSongsCatObj = {};
-    thisApp.listenedSongsCounter = 0;
-    thisApp.playedSongId = null;//czy to na pewno tutaj??
     const url = settings.db.url + '/' + settings.db.songs;
 
     fetch(url)
@@ -27,7 +24,6 @@ const app = {
       .then(function () {
         thisApp.initSearch();
         thisApp.initDiscover();
-        thisApp.newDiscover();
 
       });
   },
@@ -40,7 +36,7 @@ const app = {
     thisApp.songHomeWrapper = select.containerOf.songsList;
 
     for (let song in thisApp.songList) {
-      new Song(/*thisApp.songList[song].id,*/ thisApp.songList[song], thisApp.songHomeWrapper);
+      new Song(thisApp.songList[song], thisApp.songHomeWrapper);
       for (let category of thisApp.songList[song].categories) {
         if (thisApp.songCategories.indexOf(category) == -1) {
           thisApp.songCategories.push(category);
@@ -68,8 +64,6 @@ const app = {
     thisApp.menuLinks = document.querySelectorAll(select.menu.links);
     const idFromHash = window.location.hash.replace('#/', '');
     let pageMatchingHash = thisApp.pages[0].id;
-
-    // thisApp.activatePage(thisApp.pages[0].id);
 
     for (let page of thisApp.pages) {
       if (page.id == idFromHash) {
@@ -124,7 +118,7 @@ const app = {
     thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
 
     thisApp.discover = new Discover(thisApp.discoverContainer, thisApp.data.songs);
-
+    thisApp.newDiscover();
   },
 
   initSearch: function () {
@@ -149,13 +143,15 @@ const app = {
   newDiscover: function () {
     const thisApp = this;
 
-    thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
+    thisApp.listenedSongsCatObj = {};
+    thisApp.listenedSongsCounter = 0;
+    thisApp.playedSongId = null;
 
     thisApp.homePlayers = document.querySelectorAll('#home .songs');
     for (const player of thisApp.homePlayers) {
       const playButton = player.querySelector('audio');
       playButton.addEventListener('play', function () {
-        console.log(player.className.slice(-1));
+        //  console.log(player.className.slice(-1));
         if (thisApp.playedSongId !== player.className.slice(-1)) {
           thisApp.playedSongId = player.className.slice(-1);
           const playedSongCategories = thisApp.data.songs[thisApp.playedSongId - 1].categories;

@@ -3,10 +3,9 @@ import utils from '../utils.js';
 import songPlayer from './SongPlayer.js';
 
 class Song {
-  constructor(/*id,*/ data, wrapper) {
+  constructor(data, wrapper) {
     const thisSong = this;
 
-    //thisSong.id = id;
     thisSong.data = data;
     thisSong.wrapper = wrapper;
 

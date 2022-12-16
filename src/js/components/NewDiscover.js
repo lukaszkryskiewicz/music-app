@@ -1,86 +1,61 @@
-import { /*settings,*/ select, templates } from '../settings.js';
-import Song from './Song.js';
+import { select } from '../settings.js';
+import Discover from './Discover.js';
 
-class NewDiscover {
+class NewDiscover extends Discover {
   constructor(element, data, songCounter, listenedSongsCatObj) {
-    const thisNewDiscover = this;
+    super(element, data);
+    const thisDiscover = this;
 
-    thisNewDiscover.data = data;
-    thisNewDiscover.songCounter = songCounter;
-    thisNewDiscover.listenedSongsCatObj = listenedSongsCatObj;
+    thisDiscover.data = data;
+    thisDiscover.songCounter = songCounter;
+    thisDiscover.listenedSongsCatObj = listenedSongsCatObj;
 
-    thisNewDiscover.render(element);
-    thisNewDiscover.initWidget();
+    thisDiscover.render(element);
+    thisDiscover.initWidget();
 
-  }
-
-  render(element) {
-    const thisNewDiscover = this;
-
-    const generatedHTML = templates.discover();
-
-    thisNewDiscover.dom = {};
-    thisNewDiscover.dom.wrapper = element;
-    thisNewDiscover.dom.wrapper.innerHTML = generatedHTML;
   }
 
   initWidget() {
-    const thisNewDiscover = this;
+    const thisDiscover = this;
 
-    thisNewDiscover.widget = thisNewDiscover.dom.wrapper.querySelector(select.discover.subtitle);
+    thisDiscover.widget = thisDiscover.dom.wrapper.querySelector(select.discover.subtitle);
 
-    thisNewDiscover.widget.addEventListener('click', function (event) {
+    thisDiscover.widget.addEventListener('click', function (event) {
       event.preventDefault();
-      if (thisNewDiscover.songCounter <= 3) {
-        thisNewDiscover.getRandom(thisNewDiscover.data);
-        thisNewDiscover.randomSong(thisNewDiscover.randomId, thisNewDiscover.data);
-        console.log(thisNewDiscover.songCounter);
+      if (thisDiscover.songCounter <= 3) {
+        thisDiscover.getRandom(thisDiscover.data);
+        thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.data);
       } else {
-        console.log(thisNewDiscover.songCounter);
-        console.log(thisNewDiscover.listenedSongsCatObj);
-        let max = 0;
-        thisNewDiscover.categoriesToDraw = [];
-        for (let songCategory in thisNewDiscover.listenedSongsCatObj) {
-          if (max < thisNewDiscover.listenedSongsCatObj[songCategory]) {
-            thisNewDiscover.categoriesToDraw = [];
-            thisNewDiscover.categoriesToDraw.push(songCategory);
-            max = thisNewDiscover.listenedSongsCatObj[songCategory];
-          } else if (max == thisNewDiscover.listenedSongsCatObj[songCategory]) {
-            thisNewDiscover.categoriesToDraw.push(songCategory);
-          } else {
-            console.log('mniejsze')
-          }
-        }
-        thisNewDiscover.songToDraw = []
-        for (let song of thisNewDiscover.data)
-          for (let category of thisNewDiscover.categoriesToDraw) {
-            if (song.categories.indexOf(category) != -1) {
-              if (thisNewDiscover.songToDraw.indexOf(song) == -1)
-                thisNewDiscover.songToDraw.push(song);
-            }
-          }
-        thisNewDiscover.getRandom(thisNewDiscover.songToDraw);
-        thisNewDiscover.randomSong(thisNewDiscover.randomId, thisNewDiscover.songToDraw);
-
-      } console.log(thisNewDiscover.songToDraw)
+        thisDiscover.playPersonalizedSong();
+      }
     });
   }
 
-  getRandom(data) {
-    const thisNewDiscover = this;
-    thisNewDiscover.randomId = Math.floor(Math.random() * data.length + 1);
-  }
-
-  randomSong(id, data) {
+  playPersonalizedSong() {
     const thisDiscover = this;
+    let max = 0;
+    thisDiscover.categoriesToDraw = [];
+    for (let songCategory in thisDiscover.listenedSongsCatObj) {
+      if (max < thisDiscover.listenedSongsCatObj[songCategory]) {
+        thisDiscover.categoriesToDraw = [];
+        thisDiscover.categoriesToDraw.push(songCategory);
+        max = thisDiscover.listenedSongsCatObj[songCategory];
+      } else if (max == thisDiscover.listenedSongsCatObj[songCategory]) {
+        thisDiscover.categoriesToDraw.push(songCategory);
+      }
+    }
+    thisDiscover.songToDraw = [];
+    for (let song of thisDiscover.data) {
+      for (let category of thisDiscover.categoriesToDraw) {
+        if (song.categories.indexOf(category) != -1) {
+          if (thisDiscover.songToDraw.indexOf(song) == -1)
+            thisDiscover.songToDraw.push(song);
+        }
+      }
+    }
+    thisDiscover.getRandom(thisDiscover.songToDraw);
+    thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.songToDraw);
 
-    const randomSongWrapper = select.containerOf.randomSong;
-    const songContainer = document.querySelector(randomSongWrapper);
-    songContainer.innerHTML = '';
-
-    console.log(id, data[id - 1])
-
-    thisDiscover.randomSongGenerator = new Song(/*id,*/ data[id - 1], randomSongWrapper);
   }
 }
 

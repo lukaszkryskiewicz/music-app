@@ -1,4 +1,4 @@
-import { /*settings,*/ select, templates } from '../settings.js';
+import { select, templates } from '../settings.js';
 import Song from './Song.js';
 
 class Discover {
@@ -30,14 +30,14 @@ class Discover {
 
     thisDiscover.widget.addEventListener('click', function (event) {
       event.preventDefault();
-      thisDiscover.getRandom();
+      thisDiscover.getRandom(thisDiscover.data);
       thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.data);
     });
   }
 
-  getRandom() {
+  getRandom(data) {
     const thisDiscover = this;
-    thisDiscover.randomId = Math.floor(Math.random() * thisDiscover.data.length + 1);
+    thisDiscover.randomId = Math.floor(Math.random() * data.length + 1);
   }
 
   randomSong(id, data) {
@@ -47,7 +47,7 @@ class Discover {
     const songContainer = document.querySelector(randomSongWrapper);
     songContainer.innerHTML = '';
 
-    thisDiscover.randomSongGenerator = new Song(/*id,*/ data[id - 1], randomSongWrapper);
+    thisDiscover.randomSongGenerator = new Song(data[id - 1], randomSongWrapper);
   }
 }
 
