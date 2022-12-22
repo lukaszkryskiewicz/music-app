@@ -5,6 +5,7 @@ import Home from './components/Home.js';
 import Search from './components/Search.js';
 import Categories from './components/Categories.js';
 import NewDiscover from './components/NewDiscover.js';
+import Stats from './components/Stats.js';
 
 const app = {
   initData: function () {
@@ -24,7 +25,9 @@ const app = {
       .then(function () {
         thisApp.initSearch();
         //thisApp.initDiscover();
+        thisApp.initStats();
         thisApp.newDiscover();
+
 
       });
   },
@@ -43,6 +46,14 @@ const app = {
           thisApp.songCategories.push(category);
         }
       }
+    }
+
+    thisApp.homePlayers = document.querySelectorAll('#home .songs');
+    for (const player of thisApp.homePlayers) {
+      const playButton = player.querySelector('audio');
+      playButton.addEventListener('play', function () {
+        app.stats.playedSongIdCheck(player)
+      })
     }
 
     thisApp.initCategories(thisApp.songCategories);
@@ -99,10 +110,6 @@ const app = {
         link.getAttribute('href') == '#' + pageId
       );
     }
-
-
-
-
   },
 
   initHome: function () {
@@ -144,38 +151,17 @@ const app = {
   newDiscover: function () {
     const thisApp = this;
 
-    thisApp.listenedSongsCatObj = {};
-    thisApp.listenedSongsCounter = 0;
-    thisApp.playedSongId = null;
     thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
 
-
-    thisApp.homePlayers = document.querySelectorAll('#home .songs');
-    for (const player of thisApp.homePlayers) {
-      const playButton = player.querySelector('audio');
-      playButton.addEventListener('play', function () {
-        //  console.log(player.className.slice(-1));
-        if (thisApp.playedSongId !== player.className.slice(-1)) {
-          thisApp.playedSongId = player.className.slice(-1);
-          const playedSongCategories = thisApp.data.songs[thisApp.playedSongId - 1].categories;
-          for (let songCategory of playedSongCategories) {
-            if (typeof thisApp.listenedSongsCatObj[songCategory] == 'undefined') {
-              thisApp.listenedSongsCatObj[songCategory] = 1;
-            } else thisApp.listenedSongsCatObj[songCategory]++;
-          }
-          console.log(thisApp.listenedSongsCatObj);
-          thisApp.listenedSongsCounter++;
-          console.log(thisApp.listenedSongsCounter);
-
-
-          thisApp.discover = new NewDiscover(thisApp.discoverContainer, thisApp.data.songs, thisApp.listenedSongsCounter, thisApp.listenedSongsCatObj);
-        }
-      });
-
-    }
-    thisApp.discover = new NewDiscover(thisApp.discoverContainer, thisApp.data.songs, thisApp.listenedSongsCounter, thisApp.listenedSongsCatObj);
-
+    thisApp.discover = new NewDiscover(thisApp.discoverContainer, thisApp.data.songs, app.stats);
   },
+
+  initStats() {
+    const thisApp = this;
+
+    thisApp.stats = new Stats(app);
+  },
+
 
 
 
