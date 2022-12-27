@@ -52,8 +52,8 @@ const app = {
     for (const player of thisApp.homePlayers) {
       const playButton = player.querySelector('audio');
       playButton.addEventListener('play', function () {
-        app.stats.playedSongIdCheck(player)
-      })
+        app.stats.playedSongIdCheck(player);
+      });
     }
 
     thisApp.initCategories(thisApp.songCategories);
@@ -138,16 +138,6 @@ const app = {
 
   },
 
-  initUpper: function () {
-    const thisApp = this;
-
-    thisApp.upperElements = document.querySelectorAll('.upper');
-
-    for (const element of thisApp.upperElements) {
-      element.style.textTransform = 'uppercase';
-    }
-  },
-
   newDiscover: function () {
     const thisApp = this;
 
@@ -171,7 +161,6 @@ const app = {
     thisApp.initData();
     thisApp.initPages();
     thisApp.initHome();
-    thisApp.initUpper();
 
   }
 };
