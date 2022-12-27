@@ -34,34 +34,20 @@ class Categories {
     categoryList.addEventListener('click', function (event) {
       event.preventDefault();
       const clickedElement = event.target;
+      console.log(clickedElement)
 
-      if (thisCategories.clickedCategory && thisCategories.clickedCategory !== clickedElement.id) {
-        const previouslySelected = document.getElementById(thisCategories.clickedCategory);
-        previouslySelected.classList.remove('active');
-        thisCategories.clickedCategory = null;
+      if (clickedElement.classList.contains('category')) {
+        if (thisCategories.clickedCategory && thisCategories.clickedCategory !== clickedElement.id) {
+          const previouslySelected = document.getElementById(thisCategories.clickedCategory);
+          previouslySelected.classList.remove('active');
+          thisCategories.clickedCategory = null;
+        }
+        thisCategories.clickedCategory = thisCategories.clickedCategory ? null : clickedElement.id;
+        clickedElement.classList.toggle('active');
+
+        thisCategories.filterSongs(thisCategories.clickedCategory);
       }
-
-
-      thisCategories.clickedCategory = thisCategories.clickedCategory ? null : clickedElement.id;
-      clickedElement.classList.toggle('active');
-
-      /*      if (thisCategories.clickedCategory == null) {
-             clickedElement.classList.add('active');
-             thisCategories.clickedCategory = clickedElement.id;
-           } else if (thisCategories.clickedCategory == clickedElement.id) {
-             clickedElement.classList.remove('active');
-             thisCategories.clickedCategory = null;
-           } else if (thisCategories.clickedCategory != clickedElement.id) {
-             const previouslySelected = document.getElementById(thisCategories.clickedCategory);
-             previouslySelected.classList.remove('active');
-             clickedElement.classList.add('active');
-             thisCategories.clickedCategory = clickedElement.id;
-           } */
-
-      thisCategories.filterSongs(thisCategories.clickedCategory);
-
     });
-
 
   }
 

@@ -53,10 +53,23 @@ const app = {
       const playButton = player.querySelector('audio');
       playButton.addEventListener('play', function () {
         app.stats.playedSongIdCheck(player);
+
+        /* const playPause = player.querySelector('.play-pause-btn');
+
+        if (playPause.ariaLabel === 'Pause') {
+          window.addEventListener('click', function () {
+            playPause.click();
+          });
+        } else {
+          console.log('test2');
+        } */
       });
+
+
     }
 
     thisApp.initCategories(thisApp.songCategories);
+
   },
 
   initCategories: function (categories) {
@@ -153,14 +166,13 @@ const app = {
   },
 
 
-
-
   init: function () {
     const thisApp = this;
 
     thisApp.initData();
     thisApp.initPages();
     thisApp.initHome();
+
 
   }
 };
