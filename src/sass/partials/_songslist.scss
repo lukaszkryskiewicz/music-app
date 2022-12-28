@@ -42,3 +42,24 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .song-list {
+    .songs {
+      .song-header {
+        font-size: 25px;
+        text-align: center;
+      }
+
+      .under-player {
+        flex-direction: column;
+        text-align: center;
+
+        .categories,
+        .ranking {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

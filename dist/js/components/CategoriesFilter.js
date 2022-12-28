@@ -1,6 +1,6 @@
 import { /*settings,*/ templates, /*select*/ } from '../settings.js';
 
-class Categories {
+class CategoriesFilter {
   constructor(element, categories, data) {
     const thisCategories = this;
 
@@ -34,7 +34,6 @@ class Categories {
     categoryList.addEventListener('click', function (event) {
       event.preventDefault();
       const clickedElement = event.target;
-      console.log(clickedElement)
 
       if (clickedElement.classList.contains('category')) {
         if (thisCategories.clickedCategory && thisCategories.clickedCategory !== clickedElement.id) {
@@ -62,10 +61,10 @@ class Categories {
     } else {
       for (let song of thisCategories.data.songs) {
         const songFinder = document.querySelector('#home .song-' + song.id);
-        if (song.categories.indexOf(category) == -1) {
+        if (!song.categories.includes(category)) {
           songFinder.classList.add('hidden');
           thisCategories.hiddenSongs.push(song);
-        } else if (song.categories.indexOf(category) != -1) {
+        } else if (song.categories.includes(category)) {
           songFinder.classList.remove('hidden');
           thisCategories.hiddenSongs.splice(thisCategories.hiddenSongs[song], 1);
         }
@@ -75,4 +74,4 @@ class Categories {
 }
 
 
-export default Categories;
+export default CategoriesFilter;

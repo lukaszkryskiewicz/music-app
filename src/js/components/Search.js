@@ -54,7 +54,7 @@ class Search {
           new Song(song, searchSongWrapper);
           thisSearch.songNumber++;
         }
-      } else if (song.title.toLowerCase().includes(nameValue.toLowerCase()) && (song.categories.indexOf(categoryValue) != -1)) {
+      } else if (song.title.toLowerCase().includes(nameValue.toLowerCase()) && (song.categories.includes(categoryValue))) {
         new Song(song, searchSongWrapper);
         thisSearch.songNumber++;
       }

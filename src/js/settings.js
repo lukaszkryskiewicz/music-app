@@ -56,7 +56,7 @@ export const classNames = {
 };
 
 export const templates = {
-  songsList: Handlebars.compile(document.querySelector(select.templateOf.songsList).innerHTML),
+  song: Handlebars.compile(document.querySelector(select.templateOf.songsList).innerHTML),
   home: Handlebars.compile(document.querySelector(select.templateOf.home).innerHTML),
   discover: Handlebars.compile(document.querySelector(select.templateOf.discover).innerHTML),
   search: Handlebars.compile(document.querySelector(select.templateOf.search).innerHTML),

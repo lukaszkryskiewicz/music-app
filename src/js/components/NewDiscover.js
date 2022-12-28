@@ -2,14 +2,14 @@ import { templates, select } from '../settings.js';
 import Song from './Song.js';
 
 class NewDiscover {
-  constructor(element, data, stats) {
+  constructor(element, data, global) {
     const thisDiscover = this;
 
     thisDiscover.data = data;
-    thisDiscover.listenedSongsCatObj = stats.global.listenedSongsCatObj;
+    thisDiscover.listenedSongsCatObj = global.stats.listenedSongsCatObj;
 
     thisDiscover.render(element);
-    thisDiscover.initWidget(stats);
+    thisDiscover.initWidget(global);
 
   }
 
@@ -23,22 +23,18 @@ class NewDiscover {
     thisDiscover.dom.wrapper.innerHTML = generatedHTML;
   }
 
-  initWidget(stats) {
+  initWidget(global) {
     const thisDiscover = this;
 
     thisDiscover.widget = thisDiscover.dom.wrapper.querySelector(select.discover.subtitle);
 
     thisDiscover.widget.addEventListener('click', function (event) {
       event.preventDefault();
-      if (stats.global.listenedSongsCounter <= 3) {
+      if (global.stats.listenedSongsCounter <= 3) {
         thisDiscover.getRandom(thisDiscover.data);
         thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.data);
       } else {
-        //thisDiscover.playPersonalizedSong();
-        stats.categoriesToDraw();
-        stats.songsToDraw();
-        thisDiscover.getRandom(stats.global.songToDrawArray);
-        thisDiscover.randomSong(thisDiscover.randomId, stats.global.songToDrawArray);
+        thisDiscover.playPersonalizedSong();
       }
     });
   }
@@ -57,37 +53,38 @@ class NewDiscover {
     thisDiscover.randomSongGenerator = new Song(data[id - 1], randomSongWrapper);
   }
 
-  /* playPersonalizedSong() {
+  playPersonalizedSong() {
     const thisDiscover = this;
+
     let max = 0;
-    thisDiscover.categoriesToDraw = [];
+    thisDiscover.categoriesToDrawArray = [];
     for (let songCategory in thisDiscover.listenedSongsCatObj) {
       if (max < thisDiscover.listenedSongsCatObj[songCategory]) {
-        thisDiscover.categoriesToDraw = [];
-        thisDiscover.categoriesToDraw.push(songCategory);
+        thisDiscover.categoriesToDrawArray = [];
+        thisDiscover.categoriesToDrawArray.push(songCategory);
         max = thisDiscover.listenedSongsCatObj[songCategory];
       } else if (max == thisDiscover.listenedSongsCatObj[songCategory]) {
-        thisDiscover.categoriesToDraw.push(songCategory);
+        thisDiscover.categoriesToDrawArray.push(songCategory);
 
       }
 
     }
-    console.log(thisDiscover.categoriesToDraw);
-    thisDiscover.songToDraw = [];
+    console.log(thisDiscover.categoriesToDrawArray);
+    thisDiscover.songToDrawArray = [];
     for (let song of thisDiscover.data) {
-      for (let category of thisDiscover.categoriesToDraw) {
-        if (song.categories.indexOf(category) != -1) {
-          if (thisDiscover.songToDraw.indexOf(song) == -1) {
-            thisDiscover.songToDraw.push(song);
+      for (let category of thisDiscover.categoriesToDrawArray) {
+        if (song.categories.includes(category)) {
+          if (!thisDiscover.songToDrawArray.includes(song)) {
+            thisDiscover.songToDrawArray.push(song);
           }
         }
 
       }
     }
-    thisDiscover.getRandom(thisDiscover.songToDraw);
-    thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.songToDraw);
+    thisDiscover.getRandom(thisDiscover.songToDrawArray);
+    thisDiscover.randomSong(thisDiscover.randomId, thisDiscover.songToDrawArray);
 
-  } */
+  }
 }
 
 export default NewDiscover;

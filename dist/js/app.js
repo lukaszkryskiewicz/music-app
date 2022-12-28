@@ -3,7 +3,7 @@ import Song from './components/Song.js';
 import Home from './components/Home.js';
 //import Discover from './components/Discover.js';
 import Search from './components/Search.js';
-import Categories from './components/Categories.js';
+import CategoriesFilter from './components/CategoriesFilter.js';
 import NewDiscover from './components/NewDiscover.js';
 import Stats from './components/Stats.js';
 
@@ -21,31 +21,22 @@ const app = {
       .then(function (parsedResponse) {
         thisApp.data.songs = parsedResponse;
         thisApp.initSongs();
-      })
-      .then(function () {
+        thisApp.initCategories();
         thisApp.initSearch();
-        //thisApp.initDiscover();
         thisApp.initStats();
         thisApp.newDiscover();
-
 
       });
   },
 
   initSongs: function () {
     const thisApp = this;
-    thisApp.songList = thisApp.data.songs;
-    thisApp.songCategories = [];
+    thisApp.songList = thisApp.data.songs; //new SongList (thisApp.data.songs)
 
     thisApp.songHomeWrapper = select.containerOf.songsList;
 
     for (let song in thisApp.songList) {
       new Song(thisApp.songList[song], thisApp.songHomeWrapper);
-      for (let category of thisApp.songList[song].categories) {
-        if (thisApp.songCategories.indexOf(category) == -1) {
-          thisApp.songCategories.push(category);
-        }
-      }
     }
 
     thisApp.homePlayers = document.querySelectorAll('#home .songs');
@@ -54,31 +45,49 @@ const app = {
       playButton.addEventListener('play', function () {
         app.stats.playedSongIdCheck(player);
 
-        /* const playPause = player.querySelector('.play-pause-btn');
-
-        if (playPause.ariaLabel === 'Pause') {
-          window.addEventListener('click', function () {
-            playPause.click();
-          });
-        } else {
-          console.log('test2');
-        } */
+        /*  const playPause = player.querySelector('.play-pause-btn');
+ 
+         if (playPause.ariaLabel === 'Pause') {
+           console.log('test3')
+           const cb = function () {
+             playPause.click();
+             window.removeEventListener('click', cb);
+             console.log('test')
+           }
+           window.addEventListener('click', function (event) {
+             console.log(event.path.hasOwnProperty(4))
+             console.log(event.target)
+             if (!event.target.classList.contains('play-pause-btn__icon')) {
+               cb();
+             } else {
+             }
+           });
+         } else {
+         } */
       });
 
 
     }
 
-    thisApp.initCategories(thisApp.songCategories);
-
   },
 
-  initCategories: function (categories) {
+  initCategories: function () {
     const thisApp = this;
+    thisApp.songCategories = [];
+    for (let song in thisApp.data.songs) {
+      for (let category of thisApp.data.songs[song].categories) {
+        if (!thisApp.songCategories.includes(category)) {
+          thisApp.songCategories.push(category);
+        }
+      }
+    }
+
+    const categories = thisApp.songCategories;
     thisApp.categoriesObject = { categories };
 
     thisApp.categoriesContainer = document.querySelector(select.containerOf.categories);
 
-    thisApp.categories = new Categories(thisApp.categoriesContainer, thisApp.categoriesObject, thisApp.data);
+    thisApp.categories = new CategoriesFilter(thisApp.categoriesContainer, thisApp.categoriesObject, thisApp.data);
 
   },
 
@@ -156,7 +165,7 @@ const app = {
 
     thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
 
-    thisApp.discover = new NewDiscover(thisApp.discoverContainer, thisApp.data.songs, app.stats);
+    thisApp.discover = new NewDiscover(thisApp.discoverContainer, thisApp.data.songs, app);
   },
 
   initStats() {
