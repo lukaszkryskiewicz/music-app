@@ -1,7 +1,6 @@
 import { classNames, settings, select } from './settings.js';
 import Song from './components/Song.js';
 import Home from './components/Home.js';
-//import Discover from './components/Discover.js';
 import Search from './components/Search.js';
 import CategoriesFilter from './components/CategoriesFilter.js';
 import NewDiscover from './components/NewDiscover.js';
@@ -90,23 +89,21 @@ const app = {
 
   initCategories: function () {
     const thisApp = this;
-    thisApp.songCategories = [];
+    const songCategories = new Set();
     for (let song in thisApp.data.songs) {
       for (let category of thisApp.data.songs[song].categories) {
-        if (!thisApp.songCategories.includes(category)) {
-          thisApp.songCategories.push(category);
-        }
+        songCategories.add(category);
+        console.log(songCategories)
       }
     }
-
-    const categories = thisApp.songCategories;
+    const categories = Array.from(songCategories)
     thisApp.categoriesObject = { categories };
 
     thisApp.categoriesContainer = document.querySelector(select.containerOf.categories);
 
     thisApp.categories = new CategoriesFilter(thisApp.categoriesContainer, thisApp.categoriesObject, thisApp.data);
-
   },
+
 
   initPages: function () {
     const thisApp = this;
@@ -158,15 +155,6 @@ const app = {
 
     thisApp.home = new Home(thisApp.homeContainer);
   },
-
-  /*  initDiscover: function () {
-     const thisApp = this;
- 
-     thisApp.discoverContainer = document.querySelector(select.containerOf.discover);
- 
-     // thisApp.discover = new Discover(thisApp.discoverContainer, thisApp.data.songs);
-     thisApp.newDiscover();
-   }, */
 
   initSearch: function () {
     const thisApp = this;
