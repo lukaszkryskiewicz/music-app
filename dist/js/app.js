@@ -14,12 +14,15 @@ const app = {
     thisApp.data = {};
     const url = settings.db.url + '/' + settings.db.songs;
 
+    thisApp.loader();
+    thisApp.displayLoader();
     fetch(url)
       .then(function (rawResponse) {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
         thisApp.data.songs = parsedResponse;
+        thisApp.removeLoader();
         thisApp.initSongs();
         thisApp.initCategories();
         thisApp.initSearch();
@@ -27,6 +30,20 @@ const app = {
         thisApp.newDiscover();
 
       });
+  },
+
+  loader: function () {
+    const thisApp = this;
+
+    const loader = document.querySelector('.preload');
+
+    thisApp.displayLoader = function () {
+      loader.classList.add('display');
+    };
+
+    thisApp.removeLoader = function () {
+      loader.classList.remove('display');
+    };
   },
 
   initSongs: function () {
