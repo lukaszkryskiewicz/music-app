@@ -18,7 +18,6 @@ class CategoriesFilter {
     const thisCategories = this;
 
     const generatedHTML = templates.categories(categories);
-    console.log(categories)
 
     thisCategories.dom = {};
     thisCategories.dom.wrapper = element;

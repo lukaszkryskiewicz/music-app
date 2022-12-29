@@ -60,26 +60,6 @@ const app = {
       const playButton = player.querySelector('audio');
       playButton.addEventListener('play', function () {
         app.stats.playedSongIdCheck(player);
-
-        /*  const playPause = player.querySelector('.play-pause-btn');
- 
-         if (playPause.ariaLabel === 'Pause') {
-           console.log('test3')
-           const cb = function () {
-             playPause.click();
-             window.removeEventListener('click', cb);
-             console.log('test')
-           }
-           window.addEventListener('click', function (event) {
-             console.log(event.path.hasOwnProperty(4))
-             console.log(event.target)
-             if (!event.target.classList.contains('play-pause-btn__icon')) {
-               cb();
-             } else {
-             }
-           });
-         } else {
-         } */
       });
 
 
@@ -93,10 +73,9 @@ const app = {
     for (let song in thisApp.data.songs) {
       for (let category of thisApp.data.songs[song].categories) {
         songCategories.add(category);
-        console.log(songCategories)
       }
     }
-    const categories = Array.from(songCategories)
+    const categories = Array.from(songCategories);
     thisApp.categoriesObject = { categories };
 
     thisApp.categoriesContainer = document.querySelector(select.containerOf.categories);

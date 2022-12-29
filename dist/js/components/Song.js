@@ -1,6 +1,6 @@
 import { templates } from '../settings.js';
 import utils from '../utils.js';
-import songPlayer from './SongPlayer.js';
+import SongPlayer from './SongPlayer.js';
 
 class Song {
   constructor(data, wrapper) {
@@ -28,9 +28,7 @@ class Song {
   player() {
     const thisSong = this;
 
-    thisSong.greenAudioPlayer = new songPlayer(thisSong.wrapper, thisSong.data.id, {
-      stopOthersOnPlay: true,
-    });
+    thisSong.greenAudioPlayer = new SongPlayer(thisSong.wrapper, thisSong.data.id);
   }
 
 }
