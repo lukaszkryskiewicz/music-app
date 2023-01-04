@@ -9,8 +9,6 @@ class Song {
     thisSong.data = data;
     thisSong.wrapper = wrapper;
 
-    console.log(data);
-
     thisSong.renderSongs(thisSong.wrapper);
     thisSong.player();
   }

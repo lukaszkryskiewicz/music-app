@@ -15,6 +15,7 @@ export const select = {
     search: '.search-wrapper',
     searchSong: '#search .song-list',
     categories: '.categories-wrapper',
+    menu: '.menu-links'
   },
   menu: {
     links: '.menu-links a',

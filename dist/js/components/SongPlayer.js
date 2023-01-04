@@ -6,7 +6,7 @@ class SongPlayer {
 
     thisSongPlayer.render(sectionId, dataId);
     thisSongPlayer.initPlugin();
-    thisSongPlayer.stopOtherOnClick();
+    // thisSongPlayer.stopOtherOnClick();
   }
 
   render(sectionId, dataId) {
@@ -25,7 +25,7 @@ class SongPlayer {
 
   }
 
-  stopOtherOnClick() {
+  /* stopOtherOnClick() {
     const thisSongPlayer = this;
 
     thisSongPlayer.players = document.querySelectorAll('.songs');
@@ -46,7 +46,7 @@ class SongPlayer {
         window.addEventListener('click', cb);
       });
     }
-  }
+  } */
 }
 
 export default SongPlayer;

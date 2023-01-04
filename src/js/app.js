@@ -27,7 +27,6 @@ const app = {
         thisApp.initSearch();
         thisApp.initStats();
         thisApp.newDiscover();
-
       });
   },
 
@@ -47,7 +46,7 @@ const app = {
 
   initSongs: function () {
     const thisApp = this;
-    thisApp.songList = thisApp.data.songs; //new SongList (thisApp.data.songs)
+    thisApp.songList = thisApp.data.songs;
 
     thisApp.songHomeWrapper = select.containerOf.songsList;
 
@@ -61,7 +60,6 @@ const app = {
       playButton.addEventListener('play', function () {
         app.stats.playedSongIdCheck(player);
       });
-
 
     }
 
@@ -80,7 +78,7 @@ const app = {
 
     thisApp.categoriesContainer = document.querySelector(select.containerOf.categories);
 
-    thisApp.categories = new CategoriesFilter(thisApp.categoriesContainer, thisApp.categoriesObject, thisApp.data);
+    thisApp.categories = new CategoriesFilter(thisApp.categoriesContainer, thisApp.categoriesObject, thisApp.data, app);
   },
 
 
@@ -89,6 +87,12 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.menuLinks = document.querySelectorAll(select.menu.links);
+    thisApp.menuContainer = document.querySelector(select.containerOf.menu);
+
+    thisApp.menuContainer.addEventListener('pauseAll', function () {
+      thisApp.stopPlayer();
+    });
+
     const idFromHash = window.location.hash.replace('#/', '');
     let pageMatchingHash = thisApp.pages[0].id;
 
@@ -101,6 +105,7 @@ const app = {
     thisApp.activatePage(pageMatchingHash);
 
     for (let link of thisApp.menuLinks) {
+
       link.addEventListener('click', function (event) {
         const clickedElement = this;
         event.preventDefault();
@@ -115,6 +120,9 @@ const app = {
   activatePage: function (pageId) {
     const thisApp = this;
 
+    thisApp.pauseAll();
+    thisApp.menuContainer.dispatchEvent(thisApp.stopEvent);
+
     for (let page of thisApp.pages) {
       page.classList.toggle(classNames.pages.active, page.id == pageId);
     }
@@ -124,6 +132,7 @@ const app = {
         classNames.nav.active,
         link.getAttribute('href') == '#' + pageId
       );
+
     }
   },
 
@@ -158,6 +167,24 @@ const app = {
     thisApp.stats = new Stats(app);
   },
 
+  pauseAll() {
+    const thisApp = this;
+
+    thisApp.stopEvent = new CustomEvent('pauseAll', {
+      bubbles: true,
+      /*       detail: {
+              songId: app.stats.playedSongId,
+            } */
+    });
+  },
+
+  stopPlayer() {
+    const players = document.querySelectorAll('.songs audio');
+    for (let i = 0; i < players.length; i++) {
+      // eslint-disable-next-line no-undef
+      GreenAudioPlayer.pausePlayer(players[i]);
+    }
+  },
 
   init: function () {
     const thisApp = this;
@@ -165,7 +192,6 @@ const app = {
     thisApp.initData();
     thisApp.initPages();
     thisApp.initHome();
-
 
   }
 };

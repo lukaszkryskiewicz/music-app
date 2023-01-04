@@ -1,14 +1,16 @@
 import { /*settings,*/ templates, /*select*/ } from '../settings.js';
 
 class CategoriesFilter {
-  constructor(element, categories, data) {
+  constructor(element, categories, data, global) {
     const thisCategories = this;
 
     thisCategories.categoryList = categories;
     thisCategories.data = data;
     thisCategories.hiddenSongs = [];
+    thisCategories.global = global;
 
     thisCategories.render(element, categories);
+    thisCategories.global.pauseAll();
     thisCategories.initWidget();
 
 
@@ -27,6 +29,9 @@ class CategoriesFilter {
   initWidget() {
     const thisCategories = this;
 
+    thisCategories.global.categoriesContainer.addEventListener('pauseAll', function () {
+      thisCategories.global.stopPlayer();
+    });
     thisCategories.clickedCategory = null;
 
     const categoryList = thisCategories.dom.wrapper.querySelector('.categories-list');
@@ -34,7 +39,6 @@ class CategoriesFilter {
     categoryList.addEventListener('click', function (event) {
       event.preventDefault();
       const clickedElement = event.target;
-
       if (clickedElement.classList.contains('category')) {
         if (thisCategories.clickedCategory && thisCategories.clickedCategory !== clickedElement.id) {
           const previouslySelected = document.getElementById(thisCategories.clickedCategory);
@@ -43,10 +47,11 @@ class CategoriesFilter {
         }
         thisCategories.clickedCategory = thisCategories.clickedCategory ? null : clickedElement.id;
         clickedElement.classList.toggle('active');
-
         thisCategories.filterSongs(thisCategories.clickedCategory);
+        thisCategories.global.categoriesContainer.dispatchEvent(thisCategories.global.stopEvent);
       }
     });
+
 
   }
 
