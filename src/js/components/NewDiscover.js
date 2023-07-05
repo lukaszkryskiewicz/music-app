@@ -69,7 +69,6 @@ class NewDiscover {
       }
 
     }
-    console.log(thisDiscover.categoriesToDrawArray);
     thisDiscover.songToDrawArray = [];
     for (let song of thisDiscover.data) {
       for (let category of thisDiscover.categoriesToDrawArray) {

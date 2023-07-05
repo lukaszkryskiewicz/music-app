@@ -87,20 +87,20 @@
       transform: translate(-50%, -50%);
 
       .button {
-        width: 313px;
-        height: 133px;
         box-shadow: 0 0 118px 24px rgba(0, 0, 0, 0.11);
         background-color: $color-four;
         text-align: center;
         font-weight: $font-bold;
-        border-radius: 7%;
+        border-radius: 10px;
+      }
+
+      a {
         line-height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-      }
-
-      .button a {
+        width: 313px;
+        height: 133px;
         text-decoration: none;
         letter-spacing: 8px;
         font-size: 40px;

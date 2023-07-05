@@ -89,10 +89,6 @@ const app = {
     thisApp.menuLinks = document.querySelectorAll(select.menu.links);
     thisApp.menuContainer = document.querySelector(select.containerOf.menu);
 
-    thisApp.menuContainer.addEventListener('pauseAll', function () {
-      thisApp.stopPlayer();
-    });
-
     const idFromHash = window.location.hash.replace('#/', '');
     let pageMatchingHash = thisApp.pages[0].id;
 
@@ -119,9 +115,7 @@ const app = {
 
   activatePage: function (pageId) {
     const thisApp = this;
-
-    thisApp.pauseAll();
-    thisApp.menuContainer.dispatchEvent(thisApp.stopEvent);
+    thisApp.stopPlayer();
 
     for (let page of thisApp.pages) {
       page.classList.toggle(classNames.pages.active, page.id == pageId);
@@ -165,17 +159,6 @@ const app = {
     const thisApp = this;
 
     thisApp.stats = new Stats(app);
-  },
-
-  pauseAll() {
-    const thisApp = this;
-
-    thisApp.stopEvent = new CustomEvent('pauseAll', {
-      bubbles: true,
-      /*       detail: {
-              songId: app.stats.playedSongId,
-            } */
-    });
   },
 
   stopPlayer() {

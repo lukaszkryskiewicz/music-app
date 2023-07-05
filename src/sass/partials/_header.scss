@@ -61,6 +61,10 @@
     &:hover {
       color: $color-one;
     }
+
+    &.active {
+      color: $color-four;
+    }
   }
 }
 

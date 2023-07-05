@@ -11,7 +11,6 @@ class Stats {
   playedSongIdCheck(player) {
     if (this.playedSongId !== player.className.slice(-1)) {
       this.playedSongId = player.className.slice(-1);
-      console.log(this.playedSongId)
       const playedSongCategories = this.global.songList[this.playedSongId - 1].categories;
       this.playedSongCategories(playedSongCategories);
       this.playedSongsCounter();

@@ -73,14 +73,18 @@
 
   <script id="template-categories" type="text/x-handlebars-template">
     <section class="categories container">
-        <div class="categories-text"><p class="categories-title">Categories: </p>
-         
-            <div class='categories-list'>
+        <div class="categories-text">
+          <p class="categories-title">Categories:</p>
+            <ul class='categories-list'>
               {{#each categories}}
-             <span class="category category-{{this}}" id="{{this}}">
-             {{this}}</span>,
+            <li class='category category-{{this}}' id="{{this}}">
+              <img class='category-icon' src="../../images/{{this}}.png">
+                <span class="category-item">
+                {{this}}
+                </span>
+              </li>
              {{/each}}
-            </div>
+            </ul>
        </div>
     </section>
   </script>
@@ -98,7 +102,7 @@
         </div>
         <div class="call-to-action">
           <div class="button">
-            <a href="join-now" class="upper">Join now</a>
+            <a href="#" class="upper">Join now</a>
           </div>
         </div>
       </div>

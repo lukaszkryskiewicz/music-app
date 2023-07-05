@@ -10,7 +10,6 @@ class CategoriesFilter {
     thisCategories.global = global;
 
     thisCategories.render(element, categories);
-    thisCategories.global.pauseAll();
     thisCategories.initWidget();
 
 
@@ -28,10 +27,6 @@ class CategoriesFilter {
 
   initWidget() {
     const thisCategories = this;
-
-    thisCategories.global.categoriesContainer.addEventListener('pauseAll', function () {
-      thisCategories.global.stopPlayer();
-    });
     thisCategories.clickedCategory = null;
 
     const categoryList = thisCategories.dom.wrapper.querySelector('.categories-list');
@@ -39,16 +34,21 @@ class CategoriesFilter {
     categoryList.addEventListener('click', function (event) {
       event.preventDefault();
       const clickedElement = event.target;
-      if (clickedElement.classList.contains('category')) {
-        if (thisCategories.clickedCategory && thisCategories.clickedCategory !== clickedElement.id) {
+      const categoryElement = clickedElement.closest('.category');
+
+      if (categoryElement) {
+        const categoryId = categoryElement.id;
+
+        if (thisCategories.clickedCategory && thisCategories.clickedCategory !== categoryId) {
           const previouslySelected = document.getElementById(thisCategories.clickedCategory);
           previouslySelected.classList.remove('active');
           thisCategories.clickedCategory = null;
+
         }
-        thisCategories.clickedCategory = thisCategories.clickedCategory ? null : clickedElement.id;
-        clickedElement.classList.toggle('active');
+        thisCategories.clickedCategory = thisCategories.clickedCategory ? null : categoryId;
+        categoryElement.classList.toggle('active');
         thisCategories.filterSongs(thisCategories.clickedCategory);
-        thisCategories.global.categoriesContainer.dispatchEvent(thisCategories.global.stopEvent);
+        thisCategories.global.stopPlayer();
       }
     });
 

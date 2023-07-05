@@ -2,14 +2,32 @@
   .categories-text {
     font-size: 18px;
     letter-spacing: 4px;
+    display: flex;
+    justify-content: flex-start;
 
     .categories-title {
-      display: inline;
       color: $color-one;
     }
 
     .categories-list {
-      display: inline;
+      list-style: none;
+      padding-left: 10px;
+      text-align: left;
+      display: inline-flex;
+      flex-wrap: wrap;
+
+      .category {
+        margin: 0 15px;
+        display: flex;
+        white-space: nowrap;
+        align-items: center;
+        gap: 10%;
+        cursor: pointer;
+      }
+
+      .category-icon {
+        height: 20px;
+      }
     }
 
     .active {
@@ -17,5 +35,24 @@
       font-weight: bold;
     }
 
+  }
+}
+
+@media (max-width: 768px) {
+  .categories {
+    .categories-text {
+      flex-direction: column;
+
+      .categories-title {
+        margin-bottom: 0;
+      }
+
+      .categories-list {
+        display: grid;
+        grid-template-columns: auto auto;
+        width: fit-content;
+        margin: 10px auto;
+      }
+    }
   }
 }

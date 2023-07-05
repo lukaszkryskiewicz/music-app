@@ -6,6 +6,8 @@ class Song {
   constructor(data, wrapper) {
     const thisSong = this;
 
+    thisSong.lastPlayedSong = null;
+
     thisSong.data = data;
     thisSong.wrapper = wrapper;
 
@@ -27,6 +29,10 @@ class Song {
     const thisSong = this;
 
     thisSong.greenAudioPlayer = new SongPlayer(thisSong.wrapper, thisSong.data.id);
+    thisSong.player = document.querySelector(thisSong.greenAudioPlayer.playerId + ' audio');
+    thisSong.player.addEventListener('play', function () {
+      thisSong.lastPlayedSong = thisSong.greenAudioPlayer.playerId.slice(-1);
+    });
   }
 
 }
