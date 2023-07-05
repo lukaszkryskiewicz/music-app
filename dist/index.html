@@ -55,7 +55,13 @@
   <script id="template-songs-list" type="text/x-handlebars-template">
     <section class="songs container song-{{ id }}">
       <div class="song-header">
-        <span class="song-author upper">{{ author }}</span><span class="song-title"> - {{ title }}</span>
+        <div class="song-info">
+          <span class="song-author">{{ author }} - </span>
+          <span class="song-title">{{ title }}</span>
+        </div>
+        <div class="song-cover">
+          <img src="images/songcover-{{ id }}.jpg" alt="song cover" >
+        </div>
       </div>
       <div class="player-wrapper">
         <div class="ready-player-{{ id }} player">
@@ -78,7 +84,7 @@
             <ul class='categories-list'>
               {{#each categories}}
             <li class='category category-{{this}}' id="{{this}}">
-              <img class='category-icon' src="../../images/{{this}}.png">
+              <img class='category-icon' alt='icon' src="../../images/{{this}}.png">
                 <span class="category-item">
                 {{this}}
                 </span>
@@ -93,9 +99,11 @@
     <section class="subscribe">
       <div class="subscription-background">
         <h1 class="subscription-title upper">subscribe <span>now</span></h1>
-          <img class="artist-image" src="../../images/artist.jpg" alt="album-cover" title="album-cover">
+        <div class="artist-cover">
+          <img src="../../images/artist.jpg" alt="album-cover" title="album-cover">
         <h2 class="artist-name">Dean<br>
           &nbsp;&nbsp;Hen<span>son</span></h2>
+          </div>
         <div class="album-text">
           <h3 class="album-text-title upper">New album</h3>
           <p class="album-text-subtitle">Available only for subscribers</p>

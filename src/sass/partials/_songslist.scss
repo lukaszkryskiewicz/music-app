@@ -8,16 +8,40 @@
       color: $color-one;
       font-style: normal;
       text-align: left;
-      margin: 41px;
+      margin: 41px 30px 30px 30px;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    .song-info {
+      flex: 4 1 0px;
+      align-self: center;
 
       .song-author {
         letter-spacing: 2.25px;
         line-height: normal;
+
       }
 
       .song-title {
         letter-spacing: 2.25px;
         line-height: normal;
+        font-style: italic;
+      }
+
+    }
+
+    .song-cover {
+      overflow: hidden;
+      height: 150px;
+      width: 150px;
+
+
+      img {
+        object-fit: cover;
+        height: 100%;
+
       }
     }
 
@@ -46,19 +70,39 @@
 @media (max-width: 767px) {
   .song-list {
     .songs {
-      .song-header {
-        font-size: 25px;
-        text-align: center;
+      .song-title {
+        white-space: nowrap;
       }
+
 
       .under-player {
         flex-direction: column;
         text-align: center;
+        font-size: 15px;
+        padding: 5px;
 
         .categories,
         .ranking {
-          padding: 10px;
+          padding: 5px;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .song-list {
+    .songs {
+      .song-header {
+        font-size: 22px;
+        flex-direction: column;
+        text-align: center;
+        margin: 41px 30px 15px 30px;
+      }
+
+      .song-cover {
+        margin: 0 auto;
+        height: 120px;
       }
     }
   }
