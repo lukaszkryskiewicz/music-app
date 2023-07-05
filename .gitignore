@@ -130,3 +130,7 @@ out
 
 #MacOs file
 .DS_Store
+
+#replitFiles
+.replit
+replit.nix
