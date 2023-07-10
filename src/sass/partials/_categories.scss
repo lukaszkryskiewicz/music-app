@@ -16,9 +16,10 @@
       display: inline-flex;
       flex-wrap: wrap;
       text-transform: capitalize;
+      justify-content: center;
 
       .category {
-        margin: 0 15px;
+        margin: 0 13px;
         display: flex;
         white-space: nowrap;
         align-items: center;
